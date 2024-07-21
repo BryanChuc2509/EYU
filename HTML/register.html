@@ -1,0 +1,56 @@
+<?php 
+include '../php/register.php';
+$username = '';
+$email = '';
+$password = '';
+$repeatPassword = '';
+
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.cdnfonts.com/css/omegle" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/register.css">
+</head>
+
+<body>
+    <section class="wrapper">
+        <div class="container__login">
+            <form class="form__login" method="post" action="./../php/register.php">
+                <div class="container__logo">
+                    <img src="../image/eyu logo.png" alt="">
+                </div>
+                <h1>Registrarse</h1>
+                <div class="form__item form__item--line"></div>
+                <label class="form__item" for="user__input">Usuario</label>
+                <input class="form__item form__item--input" type="email" id="user__input" placeholder="boki12_delgado"
+                    name="username" value='<?php echo $username ?>'>
+                <label class="form__item" for="email__input">Correo Electrónico</label>
+                <input class="form__item form__item--input" type="email" id="email__input"
+                    placeholder="ejemplo@gmail.com" name="email" value='<?php echo $email ?>'>
+                <label class="form__item" for="password__input">Contraseña</label>
+                <input class="form__item form__item--input" type="password" name="password" id="password__input"
+                    placeholder="**********" value='<?php echo $password ?>'>
+                <label class="form__item" for="repeatPassword__input">Repetir Contraseña</label>
+                <input class="form__item form__item--input" type="password" id="repeatPassword__input"
+                    placeholder="**********" name="repeatPassword" value='<?php echo $repeatPassword ?>'>
+                <input class="form__item form__item--input form__inputSubmit" type="submit" value="Comenzar"
+                    name="register-btn">
+                <p class="form__pDontAccount">¿Tienes una cuenta? <a href="/HTML/login.html">Inicia sesión</a></p>
+            </form>
+            <div class="login__img">
+                <img src="./../image/Img-login.jpg" alt="">
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

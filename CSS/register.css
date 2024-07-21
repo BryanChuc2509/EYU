@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: rgb(243, 239, 222);
+}
+
+body {
+    background-image: url("../image/cheerful-mood-group-people-business-conference-modern-classroom-daytime.jpg");
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #0007;
+    padding: 15px;
+}
+
+.container__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(450px, 100%);
+    height: auto;
+    background-color: #165e46e8;
+    border-radius: 25px;
+    padding: 20px 0;
+}
+
+.container__logo {
+    width: min(125px, 100%);
+    margin-bottom: 20px;
+}
+
+.container__logo img {
+    width: 100%;
+    height: auto;
+}
+
+.form__login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    /* height: 500px; */
+}
+
+.form__item {
+    display: block;
+    width: 100%;
+    /* margin: 8px 0 8px 0; */
+}
+
+.form__item--line {
+    margin-top: 10px;
+    height: 3px;
+    width: 100%;
+    background-color:  rgb(214, 130, 56);
+}
+
+h1, label {
+    font-family: 'OMEGLE', sans-serif;
+    font-weight: 100;
+}
+
+h1 {
+    text-align: center;
+    font-size: /*min(3rem, 4.3vh)*/ 4.2vw;
+    font-size: calc(1em + 5vw);
+}
+
+label {
+    font-size: 1.4em;
+    margin: 10px 0 3px 0;
+    border-radius: 25px;
+}
+
+.form__item--input {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    color: #000;
+}
+
+.form__inputSubmit {
+    color: #EFECCD;
+    font-size: 1.3em;
+    padding: 8px;
+    background-color: #DA750F;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.form__pDontAccount {
+    text-align: center;
+    font-size: calc(1em + .5vw);
+    margin: 8px 0;
+}
+
+.login__img {
+    display: none;
+    width: 350px;
+
+}
+
+.login__img img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+}
+
+@media (width > 1024px) {
+    .login__img {
+        display: block;
+        padding: 5px;
+        /* justify-self: flex-end; */
+        margin-left: 30px;
+    }
+
+    .container__login {
+        width: 1000px;
+        justify-content: space-evenly;
+        height: clamp(540px, 95dvh, 550px);
+        position: relative;
+    }
+
+    .form__login {
+        width: min(450px, 90%);
+        padding: 10px;
+        margin-top: 30px;
+        margin-left: 40px;
+    }
+
+    .container__logo {
+        position: absolute;
+        left: 20px;
+        top: 15px;
+    }
+
+    .form__pDontAccount {
+        font-size: calc(.4em + 1vw);
+    }
+
+    h1 {
+        /* font-size: calc(2.8em + 1vw); */
+        font-size: 2.8em;
+    }
+
+}
+

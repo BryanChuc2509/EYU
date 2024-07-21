@@ -1,0 +1,368 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    min-height: 100vh;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* background-color: #e6e2dd; */
+}
+
+/* logo */
+.nav__image__logo {
+    width: 115px;
+    margin-left: 20px;
+}
+
+.nav__image__logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* logo end */
+
+.nav__form {
+    width: 40%;
+    display: flex;
+}
+
+.nav__form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    border: 2px solid #da750f;
+}
+
+/* div input-submit__bar */
+.nav__form__button {
+    display: flex;
+    position: relative;
+    min-width: 15%;
+    height: auto;
+}
+
+.nav__form__button input[type="submit"] {
+    width: 100%;
+    margin-left: 5px;
+    height: auto;
+    border: none;
+    border-radius: 25px;
+    border: none;
+    background-color: #e4dfa9;
+    transition: background-color 0.8s, box-shadow 0.5s;
+}
+
+.nav__form__button input[type="submit"]:hover {
+    box-shadow: 0 0 5px black;
+    background-color: #da750f;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header__nav__profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    background-color: #e4dfa9;
+    border-radius: 25px;
+    width: 70px;
+    height: 40px;
+    color: #164738;
+    transition: background-color 0.8s, box-shadow 0.5s;
+    position: relative;
+    border: none;
+    cursor: pointer;
+}
+
+.header__nav__profile:hover {
+    background-color: #164738;
+    box-shadow: 0 0 15px black;
+
+    .gg-profile {
+        color: #e6e2dd;
+    }
+}
+
+/* main */
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+}
+
+.main__wrapper {
+    display: flex;
+    /* background-color: aqua; */
+}
+
+.aside__nav__secondary {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: min(100px, 100%);
+    /* height: 70vh; */
+    /* margin-right: 30px; */
+}
+
+.secondary__bar__nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 20px;
+    border: none;
+}
+
+.secondary__bar__nav li a {
+    font-size: 1.8rem;
+    color: #1f1d1d;
+    transition: color 0.3s;
+}
+
+.secondary__bar__nav li a:hover {
+    color: #da750f;
+}
+
+.secondary__bar__nav li {
+    margin-bottom: 15px;
+}
+
+.main__firstSection {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin-top: 20px;
+    font-family: "OMEGLE", sans-serif;
+    font-weight: 100;
+    color: #164738;
+    font-size: 2.4rem;
+}
+
+.main__firstSection__p {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.mainFirstSection__containerImg {
+    width: min(420px, 100%);
+    margin-top: 20px;
+    margin-bottom: 70px;
+    align-self: center;
+    padding: 15px;
+}
+
+.mainFirstSection__containerImg img {
+    width: 100%;
+    height: auto;
+}
+
+.main__secondSection {
+    width: 52%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 15px;
+
+}
+
+.main__secondSection__p {
+    width: min(550px, 100%);
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    padding: 30px;
+    text-align: center;
+    background-color: #e4dfa9;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+h2 {
+    font-family: "OMEGLE", sans-serif;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 20px 0;
+    color: #da750f;
+}
+
+.mainSecondSection__containerUniversity {
+    width: min(550px, 100%);
+    display: grid;
+    grid-template-areas:
+        "img name name"
+        "img ubication ubication";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 70px 70px;
+    background-color: #e4dfa9;
+    border-radius: 15px;
+}
+
+.img__university {
+    grid-area: img;
+    padding: 0 10px 0 10px;
+    width: 200px;
+    align-self: center;
+}
+
+.img__university img {
+    width: 100%;
+    border-radius: 8px;
+    height: auto;
+}
+
+h3 {
+    grid-area: name;
+    align-self: center;
+    color: #164738;
+    font-family: "OMEGLE", sans-serif;
+    font-weight: 100;
+    font-size: 1.6rem;
+}
+
+.main__secondSection__ubication {
+    grid-area: ubication;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    /* position: fixed; */
+    bottom: 0;
+    background-color: #164738;
+    width: 100%;
+    color: #e6e2dd;
+    padding: 5px;
+}
+
+footer a {
+    color: #e6e2dd;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer img {
+    width: 150px;
+}
+
+@media (width < 1000px) {
+    .nav__image__logo {
+        display: none;
+    }
+
+    .nav__form {
+        width: 70%;
+    }
+
+    .aside__nav__secondary {
+        width: 100%;
+        background-color: #164738;
+        position: sticky;
+        top: 0;
+    }
+
+    .secondary__bar__nav ul {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        height: 50px;
+
+    }
+
+    .secondary__bar__nav ul li {
+        padding: 0 10px 0 10px;
+        color: #e6e2dd;
+    }
+    .secondary__bar__nav ul li a {
+        color: #e6e2dd;
+    }
+
+    .main__wrapper {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main {
+        flex-direction: column;
+        align-items: center;
+        min-height: 100dvh;
+
+        .main__firstSection {
+            width: 100%;
+            text-align: center;
+        }
+
+        .mainFirstSection__containerImg {
+            margin-bottom: 0;
+        }
+
+        .main__secondSection {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .mainSecondSection__containerUniversity {
+            grid-template-areas: 
+            "img"
+            "name"
+            "ubication"
+            ;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+
+            .img__university {
+                margin-top: 10px;
+                grid-area: img;
+                width: 100%;
+            }
+
+            h3 {
+                margin-top: 10px;
+                grid-area: name;
+                width: 100%;
+                text-align: center;
+
+            }
+            .main__secondSection__ubication {
+                grid-area: ubication;
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

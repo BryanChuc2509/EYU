@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const prevButton = document.querySelector('.carousel__button.prev');
+        const nextButton = document.querySelector('.carousel__button.next');
+    
+        const scrollAmount = 300; // Cantidad de píxeles a desplazar
+    
+        prevButton.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+    
+        nextButton.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="carousel__wrapper">
+        <button class="carousel__button prev">⟵</button>
+        <div class="carousel">
+            <div class="carousel__item">
+                <h3>Universidad 1</h3>
+                <p>Descripción de la Universidad 1</p>
+            </div>
+            <div class="carousel__item">
+                <h3>Universidad 2</h3>
+                <p>Descripción de la Universidad 2</p>
+            </div>
+            <div class="carousel__item">
+                <h3>Universidad 3</h3>
+                <p>Descripción de la Universidad 3</p>
+            </div>
+            <!-- Agrega más items aquí -->
+        </div>
+        <button class="carousel__button next">⟶</button>
+    </div>
+    <style>
+        .carousel__wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+    
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+            -ms-overflow-style: none;  /* Ocultar scrollbar en IE y Edge */
+        }
+    
+        .carousel::-webkit-scrollbar {
+            display: none; /* Ocultar scrollbar en Chrome, Safari y Opera */
+        }
+    
+        .carousel__item {
+            flex: 0 0 300px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    
+        .carousel__button {
+            background-color: #DA750F;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+    
+        .prev {
+            left: 0;
+        }
+    
+        .next {
+            right: 0;
+        }
+    </style>
+</body>
+</html>

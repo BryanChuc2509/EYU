@@ -1,0 +1,115 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("../image/cheerful-mood-group-people-business-conference-modern-classroom-daytime.jpg");
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #0007;
+    padding: 10px;
+}
+
+/* al cambiar el 3er valor de padding considerar que se le suma 10px mas el padding de input:submit  */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: min(500px, 100%);
+    background-color: #165e46e8;
+    padding: 0 10px 20px 10px;
+}
+
+.container__logo {
+    width: min(280px, 100%);
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.container__logo img {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px 0;
+    font-size: calc(1.5em + 1vw);
+    color: #EFECCD;
+}
+
+label,
+.form__input {
+    display: block;
+    width: 100%;
+    font-size: calc(.6em + 1vw);
+
+}
+
+.form__input {
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+}
+
+.form__input:last-child {
+    background-color: #DA750F;
+    color: #EBE7B3;
+    font-size: calc(.7em + 1vw);
+    cursor: pointer;
+}
+
+.returnLogin {
+    padding: 20px 0;
+    background-color: #136f50ee;
+    width: 100%;
+    text-align: center;
+    max-width: 500px;
+    color: #edede9;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: #edede9;
+}
+
+a:hover {
+    color: #edede9;
+    text-decoration: underline;
+}
+
+p {
+    font-size: calc(.8em + 1vw);
+}
+
+@media (width > 1024px) {
+
+
+    .form__input {
+        font-size: 18px;
+    }
+
+    .form__input:last-child {
+        font-size: 18px;
+    }
+
+    .returnLogin {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+}
