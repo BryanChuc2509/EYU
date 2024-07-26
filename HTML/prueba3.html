@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Estilos CSS de Splide -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.1.7/dist/css/splide.min.css">
+</head>
+
+<body>
+    <section id="image-carousel" class="splide" aria-label="Beautiful Images">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <img src="image01.jpg" alt="">
+                    <div>
+                        Description 01
+                    </div>
+                </li>
+
+                <li class="splide__slide">
+                    <img src="image02.jpg" alt="">
+                    <div>
+                        Description 02
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+
+        <!-- JavaScript de Splide (requiere que incluyas la librería de lodash) -->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.1.7/dist/js/splide.min.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                new Splide('#card-carousel', {
+                    perPage: 2,
+                    breakpoints: {
+                        640: {
+                            perPage: 1,
+                        },
+                    },
+                }).mount();
+            });
+        </script>
+</body>
+
+</html>

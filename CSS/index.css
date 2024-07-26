@@ -202,7 +202,7 @@ h1 {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .section__explore {
         height: 100dvh;
     }
@@ -243,6 +243,10 @@ h1 {
     .section__university__containerImg:nth-child(6) {
         display: none;
     }
+
+    .footer {
+        margin-top: 20px;
+    }
 }
 
 @media (min-height: 670px) {
@@ -252,6 +256,7 @@ h1 {
     .section__info {
         height: 650px;
     }
+
 
 
 }

@@ -1,0 +1,306 @@
+<!-- session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: ../html/login.php"); 
+    exit;
+}
+$username = $_SESSION['username'];
+date_default_timezone_set('America/Mexico_City');
+$date = date('F d, Y');
+
+?> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/test.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+            const cardsTitle = document.querySelectorAll('.card-title');
+            cards.forEach((card, index) => {
+                if (index % 2 === 0) {
+                    card.classList.add('bg-verde');
+                    card.style.color='#fff';
+
+                } else {
+                    card.classList.add('bg-arena');
+                }   
+            });
+
+            cardsTitle.forEach((card, index) => {
+                if (!(index % 2 === 0)) {
+                    card.style.color='#000'
+                }});
+
+            // new Splide('#card-carousel', {
+            //     type: 'loop',
+            //     perPage: 3,
+            //     breakpoints: {
+            //         800: {
+            //             perPage: 1,
+            //         },
+            //     },
+            // }).mount();
+        });
+    </script>
+
+
+    <style>
+        
+        
+
+        .card {
+            margin: 10px 5px 50px 5px;
+            /* height: min(400px); */
+            padding: 20px;
+            border-radius: 30px;
+
+            h5 {
+                color: #fff;
+                font-family: 'OMEGLE', sans-serif;
+                font-weight: 100;
+                font-size: 2.4em;
+                text-align: center;
+            }
+        }
+
+        .bg-verde {
+            background-color: #789477;
+        }
+
+        .bg-arena {
+            background-color: #e4dfa9;
+        }
+
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            transition: transform .5s;
+            margin-bottom: 50px;
+
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            transition: transform .5s;
+            border-radius: 30px;
+        }
+
+        .ellipsis {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 8;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5em; /* Ajusta esto según la altura de la línea de tu texto */
+            max-height: 15em;  /* 10 líneas * 1.5em altura de línea */
+        }
+
+
+        .btn {
+            margin-top: 5px;
+            background-color: #DA750F;
+            min-width: 200px;
+            border-radius: 30px;
+            color: #fff;
+            border: none;
+        }
+
+        .splide__arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .splide__arrow--prev {
+            left: -50px;
+        }
+
+        .splide__arrow--next {
+            right: -50px;
+        }
+
+        /* Estilo para los dots */
+        .splide__pagination {
+            text-align: center;
+        }
+
+        .splide__pagination__page {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .splide__pagination__page.is-active {
+            background-color: #333;
+        }
+
+        @media (width < 1000px) {
+            .card {
+                margin: 20px auto;
+                margin-bottom: 30px;
+            }
+
+            .container {
+                width: min(400px, 100%);
+            }
+
+            .splide__arrow--prev {
+                left: -50px;
+            }
+
+            .splide__arrow--next {
+                right: -50px;
+            }
+        }
+        @media (width < 500px) {
+            .card {
+                margin-bottom: 30px;
+                padding: 30px;
+            } 
+
+            .container {
+                width: min(400px, 100%);
+            }
+
+            .splide__arrow--prev {
+                left: 10px;
+            }
+
+            .splide__arrow--next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="nav__image__logo">
+                <img src="/image/green__eyu__logo.png" alt="">
+            </div>
+            <form class="nav__form " action="">
+                <input type="text" placeholder="Search...">
+                <div class="nav__form__button">
+                    <input type="submit" value="">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </form>
+            <button class="header__nav__profile">
+                <i class="gg-profile"></i>
+            </button>
+        </nav>
+    </header>
+    <div class="main__wrapper">
+        <aside class="aside__nav__secondary">
+            <nav class="secondary__bar__nav">
+                <ul>
+                    <li><a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="./catalogue.html"><i class="fa-solid fa-table-cells-large"></i></a></li>
+                    <li><a href="./ranking.html"><i class="fa-solid fa-trophy"></i></a></li>
+                    <li><a href="./save.html"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <li><a href="./test.html"><i class="fa-solid fa-paperclip"></i></a></li>
+                    <li><a href="./faq.html"><i class="fa-regular fa-comment-dots"></i></a></li>
+                    <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="main">
+            <div class="main__infoSuperior">
+                <h1>¿Aún no tienes idea sobre tu futuro? EYU te asiste</h1>
+                <p class="main__infoSuperior__p">Recuerdan que estos test y herramientas son solo una guía y no
+                    necesariamente te darán una respuesta definitiva sobre que estudiar. Es importante conseiderar tus
+                    propios intereses, valores, habilidades y circunstancias personales al tomar una decisión sobre tu
+                    educación y carrera profesional Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, itaque veritatis mollitia modi cumque, ex porro quasi tenetur beatae, omnis iusto sit fugiat exercitationem quis dolorum provident nobis labore optio! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, nemo fuga ducimus molestias sapiente nulla magni, dicta, quam illum modi excepturi nostrum sed rerum aliquam! Quia earum minus quas a.</p>
+                <div class="main__infoSuperior__fox">
+                    <img src="/image/Fox ranking.JPG" alt="">
+                </div>
+            </div>
+            <div class="container">
+                <section id="card-carousel" class="splide" aria-label="Beautiful Images">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Universidad</h5>
+                                        <p class="card-text ellipsis">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                            Cupiditate maxime neque molestiae rem earum, laboriosam corporis recusandae?
+                                            Dignissimos accusamus esse non inventore, ipsa assumenda? Laboriosam quam
+                                            possimus numquam atque enim. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, nihil inventore. Velit optio aspernatur iusto non animi quos voluptatibus corrupti aut commodi eaque, mollitia maxime nihil deleniti consequatur voluptate deserunt?</p>
+                                        <a href="#" class="btn btn-warning mx-auto">Presentar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card Tecnología</h5>
+                                        <p class="card-text ellipsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid consequatur reiciendis molestiae accusamus ad voluptates dolore. Molestias sequi praesentium dolorem, a, veritatis voluptates voluptatibus tenetur, deleniti exercitationem beatae modi debitis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque iusto quibusdam commodi cum beatae architecto itaque culpa ratione est sequi voluptatum quia ad, totam placeat fugiat reiciendis perferendis praesentium obcaecati! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, adipisci voluptatibus! Quisquam, in doloribus. Explicabo quis nemo, distinctio dicta beatae at? Iusto eaque, quos ad veniam ab aliquam sunt dignissimos.</p>
+                                        <a href="#" class="btn btn-warning  mx-auto">Presentar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card Tecnología</h5>
+                                        <p class="card-text ellipsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid consequatur reiciendis molestiae accusamus ad voluptates dolore. Molestias sequi praesentium dolorem, a, veritatis voluptates voluptatibus tenetur, deleniti exercitationem beatae modi debitis! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero veritatis quo culpa nesciunt asperiores suscipit delectus maiores unde rerum voluptates molestiae nihil, enim officiis quisquam. Dicta debitis nostrum quidem harum! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse pariatur omnis qui expedita nulla assumenda numquam laudantium saepe eos reiciendis cupiditate quaerat odio iste delectus, ducimus laborum, reprehenderit nostrum obcaecati. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, eaque aliquid. Nisi quisquam unde suscipit excepturi modi, ut assumenda sapiente minus? Et deleniti natus asperiores sit, at hic animi reprehenderit.</p>
+                                        <a href="#" class="btn btn-warning mx-auto">Presentar</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Add more slides as needed -->
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    new Splide('#card-carousel', {
+                        type: 'loop',
+                        perPage: 3,
+                        breakpoints: {
+                            1000: {
+                                perPage: 1,
+                            },
+                        },
+                    }).mount();
+                });
+            </script>
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="footer__logo">
+            <img src="/image/eyu logo.png" alt="">
+        </div>
+        <div class="container__sections">
+            <a href="">Conocenos</a>
+            <a href="">Instagram</a>
+            <a href="">Contacto</a>
+        </div>
+        <p class="footer__p">Benito Juarez. Cancún, Quintana Roo. México ESP/MEX</p>
+        <p class="footer__p">Copyright © EYU Explore Your University 2024</p>
+    </footer>
+</body>
+
+</html>

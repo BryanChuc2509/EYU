@@ -115,6 +115,11 @@ label {
     border-radius: 25px;
 }
 
+
+#email, #pass {
+    color: #000;
+}
+
 @media (width > 1024px) {
     .login__img {
         display: block;
