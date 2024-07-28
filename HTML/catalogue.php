@@ -1,13 +1,9 @@
-<!-- session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: ../html/login.php"); 
-    exit;
-}
-$username = $_SESSION['username'];
-date_default_timezone_set('America/Mexico_City');
-$date = date('F d, Y');
+<?php
+session_start();
 
-?> -->
+include("./../php/headerProfile.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +16,8 @@ $date = date('F d, Y');
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/CSS/catalogue.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../CSS/catalogue.css">
 
 
     <style>
@@ -57,39 +52,22 @@ $date = date('F d, Y');
         .splide__arrow--next {
             right: -50px;
         }
-
-
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <nav class="header__nav">
-            <div class="nav__image__logo">
-                <img src="/image/green__eyu__logo.png" alt="">
-            </div>
-            <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
-            <button class="header__nav__profile">
-                <i class="gg-profile"></i>
-            </button>
-        </nav>
-    </header>
+
+
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
                 <ul>
-                    <li><a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                    <li><a href="./catalogue.html"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./ranking.html"><i class="fa-solid fa-trophy"></i></a></li>
-                    <li><a href="./save.html"><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href="./test.html"><i class="fa-solid fa-paperclip"></i></a></li>
-                    <li><a href="./faq.html"><i class="fa-regular fa-comment-dots"></i></a></li>
+                    <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
+                    <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
+                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
+                    <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
                 </ul>
             </nav>
@@ -106,19 +84,19 @@ $date = date('F d, Y');
                         <ul class="splide__list">
                             <li class="splide__slide">
                                 <div class="card">
-                                    <img src="/image/utcancun.png" class="card-img-top" alt="...">
+                                    <img src="./../image/utcancun.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Universidad</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make
                                             up the bulk of the card's content. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit sequi quasi, quidem vero dolores atque quae, incidunt soluta quisquam possimus, deleniti et voluptatem animi corporis debitis vel harum unde voluptas?</p>
                                         <a href="#" class="btn btn-outline-primary">Ver más</a>
-                                        <a  class="btn btn-outline-success">Guardar</a>
+                                        <a class="btn btn-outline-success">Guardar</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="splide__slide">
                                 <div class="card">
-                                    <img src="/image/anahuac.png" class="card-img-top" alt="...">
+                                    <img src="./../image/anahuac.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card Tecnología</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make
@@ -130,7 +108,7 @@ $date = date('F d, Y');
                             </li>
                             <li class="splide__slide">
                                 <div class="card">
-                                    <img src="/image/politec.jpg" class="card-img-top" alt="...">
+                                    <img src="./../image/politec.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Example Title</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make
@@ -143,24 +121,24 @@ $date = date('F d, Y');
                             </li>
                             <li class="splide__slide">
                                 <div class="card">
-                                    <img src="/image/salle.jfif" class="card-img-top" alt="...">
+                                    <img src="./../image/salle.jfif" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Another Title</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make
                                             up the bulk of the card's content. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque non iusto quia impedit, doloribus distinctio quisquam doloremque architecto, blanditiis, nobis nam. Assumenda aperiam sed non libero itaque facere? Optio, sit?</p>
-                                        <a href="#" class="btn btn-outline-primary">Ver más</a>    
+                                        <a href="#" class="btn btn-outline-primary">Ver más</a>
                                         <a href="#" class="btn btn-outline-success">Guardar</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="splide__slide">
                                 <div class="card">
-                                    <img src="/image/utcancun.png" class="card-img-top" alt="...">
+                                    <img src="./../image/utcancun.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Another Title</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make
                                             up the bulk of the card's content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, dolores adipisci optio beatae officiis aliquid, sit aperiam hic, excepturi corporis error blanditiis eaque cum autem quaerat eligendi. Quo, nobis consectetur.</p>
-                                        <a href="#" class="btn btn-outline-primary">Ver más</a>    
+                                        <a href="#" class="btn btn-outline-primary">Ver más</a>
                                         <a href="#" class="btn btn-outline-success">Guardar</a>
                                     </div>
                                 </div>
@@ -172,7 +150,7 @@ $date = date('F d, Y');
             </div>
             <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function() {
                     new Splide('#card-carousel', {
                         type: 'loop',
                         perPage: 3,
@@ -188,7 +166,7 @@ $date = date('F d, Y');
     </div>
     <footer class="footer">
         <div class="footer__logo">
-            <img src="/image/eyu logo.png" alt="">
+            <img src="./../image/eyu logo.png" alt="">
         </div>
         <div class="container__sections">
             <a href="">Conocenos</a>

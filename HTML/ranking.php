@@ -1,13 +1,9 @@
-<!-- session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: ../html/login.php"); 
-    exit;
-}
-$username = $_SESSION['username'];
-date_default_timezone_set('America/Mexico_City');
-$date = date('F d, Y');
+<?php
+session_start();
 
-?> -->
+include("./../php/headerProfile.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,43 +16,25 @@ $date = date('F d, Y');
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/CSS/ranking.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../CSS/ranking.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
-        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 </head>
 
 <body>
-    <header class="header">
-        <nav class="header__nav">
-            <div class="nav__image__logo">
-                <img src="/image/green__eyu__logo.png" alt="">
-            </div>
-            <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
-            <button class="header__nav__profile">
-                <i class="gg-profile"></i>
-            </button>
-        </nav>
-    </header>
+
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
                 <ul>
-                    <li><a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                    <li><a href="./catalogue.html"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./ranking.html"><i class="fa-solid fa-trophy"></i></a></li>
-                    <li><a href="./save.html"><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href="./test.html"><i class="fa-solid fa-paperclip"></i></a></li>
-                    <li><a href="./faq.html"><i class="fa-regular fa-comment-dots"></i></a></li>
+                    <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
+                    <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
+                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
+                    <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
                 </ul>
             </nav>
@@ -69,7 +47,7 @@ $date = date('F d, Y');
                     desvalorizar a ninguna institución, simplemente buscamos la interacción de nuestros usuarios para
                     evaluar la diversidad y calidad de las universidades locales </p>
                 <div class="main__infoSuperior__fox">
-                    <img src="/image/Fox ranking.JPG" alt="">
+                    <img src="./../image/Fox ranking.JPG" alt="">
                 </div>
             </div>
             <div class="contenedor contenedor--1">
@@ -84,7 +62,7 @@ $date = date('F d, Y');
                     <a class="comment" href="">Comentarios</a>
                 </div>
                 <div class="img__uni">
-                    <img src="/image/anahuac.png" alt="">
+                    <img src="./../image/anahuac.png" alt="">
                 </div>
             </div>
             <div class="contenedor">
@@ -99,7 +77,7 @@ $date = date('F d, Y');
                     <a class="comment" href="">Comentarios</a>
                 </div>
                 <div class="img__uni">
-                    <img src="/image/anahuac.png" alt="">
+                    <img src="./../image/anahuac.png" alt="">
                 </div>
             </div>
             <div class="contenedor">
@@ -114,14 +92,14 @@ $date = date('F d, Y');
                     <a class="comment" href="">Comentarios</a>
                 </div>
                 <div class="img__uni">
-                    <img src="/image/anahuac.png" alt="">
+                    <img src="./../image/anahuac.png" alt="">
                 </div>
             </div>
         </main>
     </div>
     <footer class="footer">
         <div class="footer__logo">
-            <img src="/image/eyu logo.png" alt="">
+            <img src="./../image/eyu logo.png" alt="">
         </div>
         <div class="container__sections">
             <a href="">Conocenos</a>

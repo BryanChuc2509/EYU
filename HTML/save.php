@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+include("./../php/headerProfile.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,42 +16,25 @@
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/CSS/save.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../CSS/save.css">
 
 
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <nav class="header__nav">
-            <div class="nav__image__logo">
-                <img src="/image/green__eyu__logo.png" alt="">
-            </div>
-            <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
-            <button class="header__nav__profile">
-                <i class="gg-profile"></i>
-            </button>
-        </nav>
-    </header>
+
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
                 <ul>
-                    <li><a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                    <li><a href="./catalogue.html"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./ranking.html"><i class="fa-solid fa-trophy"></i></a></li>
-                    <li><a href="./save.html"><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href="./test.html"><i class="fa-solid fa-paperclip"></i></a></li>
-                    <li><a href="./faq.html"><i class="fa-regular fa-comment-dots"></i></a></li>
+                    <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
+                    <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
+                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
+                    <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
                 </ul>
             </nav>
@@ -56,7 +45,7 @@
                 <h1>Tus favoritos</h1>
                 <div id="container1" class="container-md">
                     <div class="container-md__container__imgUniversity">
-                        <img src="/image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
+                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
                         <button class="delete" onmouseover="darkenImage('container1')" onmouseout="undarkenImage('container1')">
                             <i class="fa-solid fa-trash"></i>
                         </button>
@@ -72,9 +61,8 @@
                 </div>
                 <div id="container2" class="container-md">
                     <div class="container-md__container__imgUniversity">
-                        <img src="/image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
-                        <button onmouseover="darkenImage('container2')" onmouseout="undarkenImage('container2')"
-                            class="delete"><i class="fa-solid fa-trash"></i>
+                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
+                        <button onmouseover="darkenImage('container2')" onmouseout="undarkenImage('container2')" class="delete"><i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
                     <div class="container-md__container__infoUniversity">
@@ -88,9 +76,8 @@
                 </div>
                 <div id="container2" class="container-md">
                     <div class="container-md__container__imgUniversity">
-                        <img src="/image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
-                        <button onmouseover="darkenImage('container2')" onmouseout="undarkenImage('container2')"
-                            class="delete"><i class="fa-solid fa-trash"></i>
+                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
+                        <button onmouseover="darkenImage('container2')" onmouseout="undarkenImage('container2')" class="delete"><i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
                     <div class="container-md__container__infoUniversity">
@@ -104,9 +91,8 @@
                 </div>
                 <div id="container2" class="container-md">
                     <div class="container-md__container__imgUniversity">
-                        <img src="/image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
-                        <button onmouseover="darkenImage('container2')" onmouseout="undarkenImage('container2')"
-                            class="delete"><i class="fa-solid fa-trash"></i>
+                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
+                        <button onmouseover="darkenImage('container2')" onmouseout="undarkenImage('container2')" class="delete"><i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
                     <div class="container-md__container__infoUniversity">
@@ -120,13 +106,13 @@
                 </div>
             </div>
             <div class="main__secondPart__imgFox">
-                <img class="fox" src="/image/pixelcut-export.png" class="rounded float-start" alt="...">
+                <img class="fox" src="./../image/pixelcut-export.png" class="rounded float-start" alt="...">
             </div>
         </main>
     </div>
     <footer class="footer">
         <div class="footer__logo">
-            <img src="/image/eyu logo.png" alt="">
+            <img src="./../image/eyu logo.png" alt="">
         </div>
         <div class="container__sections">
             <a href="">Conocenos</a>

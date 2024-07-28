@@ -1,61 +1,41 @@
-<!-- session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: ../html/login.php"); 
-    exit;
-}
-$username = $_SESSION['username'];
-date_default_timezone_set('America/Mexico_City');
-$date = date('F d, Y');
+<?php 
+    session_start();
+    
+    include("./../php/headerProfile.php");
+?>
 
-?> -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CSS/catalogueAdmin.css">
     <title>Home</title>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./../CSS/catalogueAdmin.css">
 </head>
-
 <body>
-    <header class="header">
-        <nav class="header__nav">
-            <div class="nav__image__logo">
-                <img src="/image/green__eyu__logo.png" alt="">
-            </div>
-            <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
-            <button class="header__nav__profile">
-                <i class="gg-profile"></i>
-            </button>
-        </nav>
-    </header>
+    
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
                 <ul>
-                    <li><a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                    <li><a href="./catalogue.html"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./faq.html"><i class="fa-regular fa-comment-dots"></i></a></li>
+                    <li><a href="./../Admin/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="./../Admin/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
+                    <li><a href="./../Admin/comentarios.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                 </ul>
             </nav>
         </aside>
         <main class="main">
             <div class="main__firstPart">
-                <h1>Tus favoritos</h1>
+                <h1>Universidades </h1>
+                <a href="./addUniversity copy.php">Agregar</a>
                 <div id="container1" class="container-md">
                     <div class="container-md__container__imgUniversity">
-                        <img src="/image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
+                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
                     </div>
                     <div class="container-md__container__infoUniversity">
                         <h2>Universidad Técnologica de Cancún</h2>
@@ -84,7 +64,7 @@ $date = date('F d, Y');
     </div>
     <footer class="footer">
         <div class="footer__logo">
-            <img src="/image/eyu logo.png" alt="">
+            <img src="./../image/eyu logo.png" alt="">
         </div>
         <div class="container__sections">
             <a href="">Conocenos</a>

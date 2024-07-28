@@ -1,13 +1,8 @@
-<!-- session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: ../html/login.php"); 
-    exit;
-}
-$username = $_SESSION['username'];
-date_default_timezone_set('America/Mexico_City');
-$date = date('F d, Y');
+<?php
+session_start();
 
-?> -->
+include("./../php/headerProfile.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,28 +15,28 @@ $date = date('F d, Y');
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/CSS/test.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../CSS/test.css">
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card');
             const cardsTitle = document.querySelectorAll('.card-title');
             cards.forEach((card, index) => {
                 if (index % 2 === 0) {
                     card.classList.add('bg-verde');
-                    card.style.color='#fff';
+                    card.style.color = '#fff';
 
                 } else {
                     card.classList.add('bg-arena');
-                }   
+                }
             });
 
             cardsTitle.forEach((card, index) => {
                 if (!(index % 2 === 0)) {
-                    card.style.color='#000'
-                }});
+                    card.style.color = '#000'
+                }
+            });
 
             // new Splide('#card-carousel', {
             //     type: 'loop',
@@ -57,9 +52,6 @@ $date = date('F d, Y');
 
 
     <style>
-        
-        
-
         .card {
             margin: 10px 5px 50px 5px;
             /* height: min(400px); */
@@ -104,8 +96,10 @@ $date = date('F d, Y');
             -webkit-line-clamp: 8;
             overflow: hidden;
             text-overflow: ellipsis;
-            line-height: 1.5em; /* Ajusta esto según la altura de la línea de tu texto */
-            max-height: 15em;  /* 10 líneas * 1.5em altura de línea */
+            line-height: 1.5em;
+            /* Ajusta esto según la altura de la línea de tu texto */
+            max-height: 15em;
+            /* 10 líneas * 1.5em altura de línea */
         }
 
 
@@ -170,11 +164,12 @@ $date = date('F d, Y');
                 right: -50px;
             }
         }
+
         @media (width < 500px) {
             .card {
                 margin-bottom: 30px;
                 padding: 30px;
-            } 
+            }
 
             .container {
                 width: min(400px, 100%);
@@ -192,33 +187,17 @@ $date = date('F d, Y');
 </head>
 
 <body>
-    <header class="header">
-        <nav class="header__nav">
-            <div class="nav__image__logo">
-                <img src="/image/green__eyu__logo.png" alt="">
-            </div>
-            <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
-            <button class="header__nav__profile">
-                <i class="gg-profile"></i>
-            </button>
-        </nav>
-    </header>
+
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
                 <ul>
-                    <li><a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                    <li><a href="./catalogue.html"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./ranking.html"><i class="fa-solid fa-trophy"></i></a></li>
-                    <li><a href="./save.html"><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href="./test.html"><i class="fa-solid fa-paperclip"></i></a></li>
-                    <li><a href="./faq.html"><i class="fa-regular fa-comment-dots"></i></a></li>
+                    <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
+                    <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
+                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
+                    <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
                 </ul>
             </nav>
@@ -231,7 +210,7 @@ $date = date('F d, Y');
                     propios intereses, valores, habilidades y circunstancias personales al tomar una decisión sobre tu
                     educación y carrera profesional Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, itaque veritatis mollitia modi cumque, ex porro quasi tenetur beatae, omnis iusto sit fugiat exercitationem quis dolorum provident nobis labore optio! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, nemo fuga ducimus molestias sapiente nulla magni, dicta, quam illum modi excepturi nostrum sed rerum aliquam! Quia earum minus quas a.</p>
                 <div class="main__infoSuperior__fox">
-                    <img src="/image/Fox ranking.JPG" alt="">
+                    <img src="./../image/Fox ranking.JPG" alt="">
                 </div>
             </div>
             <div class="container">
@@ -275,7 +254,7 @@ $date = date('F d, Y');
             </div>
             <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function() {
                     new Splide('#card-carousel', {
                         type: 'loop',
                         perPage: 3,
@@ -291,7 +270,7 @@ $date = date('F d, Y');
     </div>
     <footer class="footer">
         <div class="footer__logo">
-            <img src="/image/eyu logo.png" alt="">
+            <img src="./../image/eyu logo.png" alt="">
         </div>
         <div class="container__sections">
             <a href="">Conocenos</a>
