@@ -1,16 +1,33 @@
+<?php
+session_start();
+
+// Verificar si la variable de sesión está establecida
+if (!isset($_SESSION['Nombre_de_Usuario'])) {
+    header('Location: ./../HTML/login.php');
+    exit();
+}
+
+?>
+<!-- Inslusión del header -->
+<?php
+include("./../php/headerProfile.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Añadir universidades</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../CSS/addUniversity.css">
 </head>
+
 
 <style>
     /* Your CSS styles */
@@ -514,74 +531,6 @@
 </style>
 
 <body>
-    <header class="header">
-        <nav class="header__nav">
-            <div class="nav__image__logo">
-                <img src="./../image/green__eyu__logo.png" alt="">
-            </div>
-            <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form>
-            <button class="header__nav__profile">
-                <i class="gg-profile"></i>
-            </button>
-        </nav>
-    </header>
-
-    <div class="overlay" id="overlay"></div>
-
-    <div class="menu" id="menu">
-        <div class="menu-header">
-            <span class="close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></span>
-            <!-- <span class="close-btn" id="close-btn">&times;</span> -->
-            <i class="gg-profile"></i>
-        </div>
-        <div class="info__user">
-            <span class="info__username">
-                <?php /* echo $username; */ ?>
-            </span>
-            <span class="info__email">
-                <?php echo $email; ?>
-            </span>
-        </div>
-
-        <form id="profile-form" class="menu__content" method="post" action="./home.php">
-            <div class="menu__content__inputs">
-                <label class="menu__item__label" for="alias">Alias</label>
-                <input id="alias" class="menu__item__input" type="text" placeholder="Bokidelgado" name="alias" value="<?php echo $username; ?>">
-            </div>
-            <div class="menu__content__inputs">
-                <label class="menu__item__label" for="password">Contraseña</label>
-                <input id="password" class="menu__item__input" type="password" placeholder="Bokidelgado" name="password" value="<?php echo $contraseña; ?>">
-            </div>
-            <div class="menu__content__inputs">
-                <label class="menu__item__label" for="name">Nombre</label>
-                <input id="name" class="menu__item__input" type="text" placeholder="Bokidelgado" name="name" value="<?php echo $nombre; ?>">
-            </div>
-            <div class="menu__content__inputs">
-                <label class="menu__item__label" for="description">Descripción</label>
-                <textarea id="description" style="resize: none; scrollbar-width: thin;" class="menu__item__input" name="description" cols="30" rows="3"><?php echo $descripcion; ?> </textarea>
-            </div>
-            <div class="menu__content__btns">
-                <input class="btn__update" type="submit" value="Actualizar" name="btnUpdate">
-                <input class="btn__delete" type="submit" value="Eliminar" name="btnDelete">
-                <!-- <button type="button" id="updateProfile" class="btn__update" name="btnUpdate">Actualizar</button>
-            <button type="button" id="deleteAccount" class="btn__delete" name="btnDelete">Eliminar</button> -->
-            </div>
-            <div class="menu__content__img">
-                <a class="icon__closeSesion" href="./../php/logout.php">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
-                <img src="./../image/IMGPROFILE (1).png" alt="">
-            </div>
-        </form>
-
-    </div>
-
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
@@ -594,51 +543,36 @@
         </aside>
         <main class="main">
 
-            <style>
-                .container-md {
-                    background-color: #e4dfa9;
-                    margin-top: 20px;
-                    border-radius: 15px;
-                    padding: 10px;
-                }
-
-                h2 {
-                    font-family: 'OMEGLE', sans-serif;
-                    color: #164738;
-                }
-            </style>
-
             <div class="main__firstPart">
                 <h1>Agregar Universidad</h1>
 
-                <!-- Formulario Completo -->
                 <form id="formUniversidad" action="./../php/addUni.php" method="post" enctype="multipart/form-data">
                     <!-- Información General -->
                     <div id="container1" class="container-md mb-4">
-                        <h2>Información general</h2>
+                        <h2>Información General</h2>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Nombre</span>
-                            <input type="text" class="form-control" name="nombre" placeholder="Universidad Tecnológica..." aria-label="Nombre" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Universidad Tecnológica..." aria-label="Nombre" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Descripción</span>
-                            <textarea class="form-control" name="descripcion" aria-label="With textarea" placeholder="La universidad se caracteriza por contar con..."></textarea>
+                            <textarea class="form-control" id="descripcionUniversidad" name="descripcionUniversidad" aria-label="Descripción" placeholder="La universidad se caracteriza por contar con..."></textarea>
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                             <select class="form-select" id="inputGroupSelect01" name="tipo">
-                                <option selected>Choose...</option>
-                                <option value="1">Pública</option>
-                                <option value="2">Privada</option>
+                                <option selected disabled>Selecciona...</option>
+                                <option value="publica">Pública</option>
+                                <option value="privada">Privada</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">URL</span>
-                            <input type="text" class="form-control" name="url" placeholder="https://utcancun.com.mx" aria-label="URL" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="url" name="url" placeholder="https://utcancun.com.mx" aria-label="URL" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Correo</span>
-                            <input type="text" class="form-control" name="correo" placeholder="utcancun@ut.edu.mx" aria-label="Correo" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1">Número Telefónico</span>
+                            <input type="tel" class="form-control" id="numero" name="numero" placeholder="998 123 4567" aria-label="Número Telefónico" aria-describedby="basic-addon1">
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Imagen Universidad</label>
@@ -651,23 +585,23 @@
                         <h2>Dirección</h2>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Smza</span>
-                            <input type="text" class="form-control" name="smza" placeholder="259" aria-label="Smza" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="smza" name="smza" placeholder="259" aria-label="Smza" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Mza</span>
-                            <input type="text" class="form-control" name="mza" placeholder="35" aria-label="Mza" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="mza" name="mza" placeholder="35" aria-label="Mza" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Calle</span>
-                            <input type="text" class="form-control" name="calle" placeholder="Av. Colosio..." aria-label="Calle" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="calle" name="calle" placeholder="Av. Colosio..." aria-label="Calle" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Lote</span>
-                            <input type="text" class="form-control" name="lote" placeholder="2" aria-label="Lote" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="lote" name="lote" placeholder="2" aria-label="Lote" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">C.P.</span>
-                            <input type="text" class="form-control" name="cp" placeholder="77539" aria-label="CP" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" id="cp" name="cp" placeholder="77539" aria-label="CP" aria-describedby="basic-addon1">
                         </div>
                     </div>
 
@@ -675,11 +609,18 @@
                     <div class="container-md">
                         <h2>Formulario de Carreras</h2>
                         <div class="mb-3">
-                            <label for="carrera" class="form-label">Nueva Carrera</label>
-                            <input type="text" class="form-control" id="carrera" name="carrera" placeholder="Introduce una carrera">
+                            <div class="mb-3">
+                                <label for="carrera" class="form-label input-group-text">Nueva Carrera</label>
+                                <input type="text" class="form-control" id="carrera" name="carrera" placeholder="Introduce una carrera">
+                            </div>
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Descripción</span>
-                                <textarea class="form-control" name="descripcion" aria-label="With textarea" placeholder="La universidad se caracteriza por contar con..."></textarea>
+                                <textarea class="form-control" id="descripcionCarrera" name="descripcionCarrera" aria-label="Descripción" placeholder="La carrera se caracteriza por..."></textarea>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Duración</span>
+                                <input type="text" class="form-control" id="duracionCarrera" name="duracionCarrera" placeholder="2 años" aria-label="Duración">
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary" onclick="agregarCarrera()">Agregar Carrera</button>
@@ -692,68 +633,171 @@
 
 
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
                 <script>
-                    function agregarCarrera() {
-                        const inputCarrera = document.getElementById('carrera');
-                        const carrera = inputCarrera.value.trim();
-                        const listaCarreras = document.getElementById('listaCarreras');
-                        const tituloCarreras = document.getElementById('tituloCarreras');
-                        const carrerasInput = document.getElementById('carreras');
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        let carreras = [];
 
-                        if (carrera !== '') {
-                            // Crear un nuevo elemento de lista
-                            const nuevoElemento = document.createElement('li');
-                            nuevoElemento.className = 'list-group-item d-flex justify-content-between align-items-center';
-                            nuevoElemento.textContent = carrera;
+                        function actualizarListaCarreras() {
+                            const listaCarreras = document.getElementById('listaCarreras');
+                            listaCarreras.innerHTML = '';
+                            carreras.forEach((carrera, index) => {
+                                const li = document.createElement('li');
+                                li.className = 'list-group-item';
+                                li.innerHTML = `
+                    <details>
+                        <summary class="d-flex justify-content-between align-items-center">
+                            ${carrera.nombre}
+                            <button class="btn btn-danger btn-sm" onclick="eliminarCarrera(${index})">Eliminar</button>
+                        </summary>
+                        <p><strong>Descripción:</strong>${carrera.descripcion}</p>
+                        <p><strong>Duración:</strong> ${carrera.duracion}</p>
+                    </details>
+                `;
+                                listaCarreras.appendChild(li);
+                            });
 
-                            // Crear un botón de eliminación
-                            const botonEliminar = document.createElement('button');
-                            botonEliminar.className = 'btn btn-danger btn-sm';
-                            botonEliminar.textContent = 'Eliminar';
-                            botonEliminar.onclick = function() {
-                                eliminarCarrera(nuevoElemento);
-                            };
+                            document.getElementById('tituloCarreras').style.display = carreras.length > 0 ? 'block' : 'none';
+                        }
 
-                            // Agregar el botón al nuevo elemento de lista
-                            nuevoElemento.appendChild(botonEliminar);
+                        window.agregarCarrera = function() {
+                            const nombre = document.getElementById('carrera').value.trim();
+                            const descripcion = document.getElementById('descripcionCarrera').value.trim();
+                            const duracion = document.getElementById('duracionCarrera').value.trim();
 
-                            // Agregar el nuevo elemento a la lista
-                            listaCarreras.appendChild(nuevoElemento);
-
-                            // Mostrar el título si es necesario
-                            if (listaCarreras.children.length > 0) {
-                                tituloCarreras.style.display = 'block';
+                            // Validar campos de carrera
+                            if (!nombre) {
+                                alert('Por favor, ingresa el nombre de la carrera.');
+                                document.getElementById('carrera').focus();
+                                return;
+                            }
+                            if (!descripcion) {
+                                alert('Por favor, ingresa una descripción para la carrera.');
+                                document.getElementById('descripcionCarrera').focus();
+                                return;
+                            }
+                            if (!duracion) {
+                                alert('Por favor, ingresa la duración de la carrera.');
+                                document.getElementById('duracionCarrera').focus();
+                                return;
                             }
 
-                            // Actualizar el campo oculto con las carreras
-                            actualizarCampoOculto();
+                            // Agregar carrera y limpiar campos
+                            carreras.push({
+                                nombre,
+                                descripcion,
+                                duracion
+                            });
+                            actualizarListaCarreras();
+                            document.getElementById('carrera').value = '';
+                            document.getElementById('descripcionCarrera').value = '';
+                            document.getElementById('duracionCarrera').value = '';
+                        };
 
-                            // Limpiar el campo de entrada
-                            inputCarrera.value = '';
-                        } else {
-                            alert('Por favor, introduce una carrera.');
-                        }
-                    }
+                        window.eliminarCarrera = function(index) {
+                            if (confirm(`¿Estás seguro de que quieres eliminar la carrera "${carreras[index].nombre}"?`)) {
+                                carreras.splice(index, 1);
+                                actualizarListaCarreras();
+                            }
+                        };
 
-                    function eliminarCarrera(elemento) {
-                        const listaCarreras = document.getElementById('listaCarreras');
-                        listaCarreras.removeChild(elemento);
+                        document.getElementById('formUniversidad').addEventListener('submit', function(event) {
+                            const nombre = document.getElementById('nombre').value.trim();
+                            const descripcionUniversidad = document.getElementById('descripcionUniversidad').value.trim();
+                            const tipo = document.getElementById('inputGroupSelect01').value;
+                            const url = document.getElementById('url').value.trim();
+                            const numero = document.getElementById('numero').value.trim();
+                            const imagen = document.getElementById('formFile').files.length > 0;
+                            const smza = document.getElementById('smza').value.trim();
+                            const mza = document.getElementById('mza').value.trim();
+                            const calle = document.getElementById('calle').value.trim();
+                            const lote = document.getElementById('lote').value.trim();
+                            const cp = document.getElementById('cp').value.trim();
 
-                        // Ocultar el título si no hay más carreras
-                        if (listaCarreras.children.length === 0) {
-                            document.getElementById('tituloCarreras').style.display = 'none';
-                        }
+                            // Validar campos del formulario
+                            if (!nombre) {
+                                alert('Por favor, completa el nombre de la universidad.');
+                                document.getElementById('nombre').focus();
+                                event.preventDefault(); // Prevenir el envío del formulario si hay errores
+                                return;
+                            }
+                            if (!descripcionUniversidad) {
+                                alert('Por favor, completa la descripción de la universidad.');
+                                document.getElementById('descripcionUniversidad').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!tipo) {
+                                alert('Por favor, selecciona el tipo de universidad.');
+                                document.getElementById('inputGroupSelect01').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!url) {
+                                alert('Por favor, ingresa la URL de la universidad.');
+                                document.getElementById('url').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!numero) {
+                                alert('Por favor, ingresa el número telefónico de la universidad.');
+                                document.getElementById('numero').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!imagen) {
+                                alert('Por favor, sube una imagen de la universidad.');
+                                document.getElementById('formFile').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!smza) {
+                                alert('Por favor, completa el campo Smza.');
+                                document.getElementById('smza').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!mza) {
+                                alert('Por favor, completa el campo Mza.');
+                                document.getElementById('mza').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!calle) {
+                                alert('Por favor, completa el campo Calle.');
+                                document.getElementById('calle').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!lote) {
+                                alert('Por favor, completa el campo Lote.');
+                                document.getElementById('lote').focus();
+                                event.preventDefault();
+                                return;
+                            }
+                            if (!cp) {
+                                alert('Por favor, completa el campo C.P.');
+                                document.getElementById('cp').focus();
+                                event.preventDefault();
+                                return;
+                            }
 
-                        // Actualizar el campo oculto con las carreras
-                        actualizarCampoOculto();
-                    }
+                            // Validar si se ha agregado al menos una carrera
+                            if (carreras.length === 0) {
+                                alert('Por favor, agrega al menos una carrera.');
+                                document.getElementById('carrera').focus();
+                                event.preventDefault(); // Prevenir el envío del formulario si no hay carreras
+                                return;
+                            }
 
-                    function actualizarCampoOculto() {
-                        const listaCarreras = document.getElementById('listaCarreras');
-                        const carrerasArray = Array.from(listaCarreras.children).map(item => item.textContent.replace('Eliminar', '').trim());
-                        document.getElementById('carreras').value = JSON.stringify(carrerasArray);
-                    }
+                            // Convertir carreras a formato JSON y guardarlas en un campo oculto
+                            document.getElementById('carreras').value = JSON.stringify(carreras);
+                        });
+                    });
                 </script>
+
+
+
             </div>
 
             <div class="main__secondPart__img">
@@ -774,153 +818,6 @@
         <p class="footer__p">Copyright © EYU Explore Your University 2024</p>
     </footer>
 
-    <script>
-        const profileButton = document.querySelector('.header__nav__profile');
-        const menu = document.getElementById('menu');
-        const overlay = document.getElementById('overlay');
-        const closeBtn = document.getElementById('close-btn');
-
-        profileButton.addEventListener('click', function() {
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        closeBtn.addEventListener('click', function() {
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click', function() {
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('formUniversidad');
-
-            form.addEventListener('submit', (event) => {
-                let isValid = true;
-                let errorMessage = '';
-
-                // Obtener los valores de los campos
-                const nombre = document.querySelector('input[name="nombre"]').value.trim();
-                const descripcion = document.querySelector('textarea[name="descripcion"]').value.trim();
-                const tipo = document.querySelector('select[name="tipo"]').value;
-                const url = document.querySelector('input[name="url"]').value.trim();
-                const correo = document.querySelector('input[name="correo"]').value.trim();
-                const smza = document.querySelector('input[name="smza"]').value.trim();
-                const mza = document.querySelector('input[name="mza"]').value.trim();
-                const calle = document.querySelector('input[name="calle"]').value.trim();
-                const lote = document.querySelector('input[name="lote"]').value.trim();
-                const cp = document.querySelector('input[name="cp"]').value.trim();
-                const imagen = document.querySelector('input[name="imagen"]').files.length;
-
-                // Validar campos
-                if (!nombre) {
-                    errorMessage += 'El nombre es obligatorio.\n';
-                    isValid = false;
-                }
-                if (!descripcion) {
-                    errorMessage += 'La descripción es obligatoria.\n';
-                    isValid = false;
-                }
-                if (!tipo) {
-                    errorMessage += 'El tipo de universidad es obligatorio.\n';
-                    isValid = false;
-                }
-                if (!isValidURL(url)) {
-                    errorMessage += 'La URL no es válida.\n';
-                    isValid = false;
-                }
-                if (!isValidEmail(correo)) {
-                    errorMessage += 'El correo electrónico no es válido.\n';
-                    isValid = false;
-                }
-                if (!smza) {
-                    errorMessage += 'El Smza es obligatorio.\n';
-                    isValid = false;
-                }
-                if (!mza) {
-                    errorMessage += 'El Mza es obligatorio.\n';
-                    isValid = false;
-                }
-                if (!calle) {
-                    errorMessage += 'La calle es obligatoria.\n';
-                    isValid = false;
-                }
-                if (!lote) {
-                    errorMessage += 'El lote es obligatorio.\n';
-                    isValid = false;
-                }
-                if (!cp || !/^\d{5}$/.test(cp)) {
-                    errorMessage += 'El C.P. es obligatorio y debe ser un código postal válido (5 dígitos).\n';
-                    isValid = false;
-                }
-                if (imagen === 0) {
-                    errorMessage += 'La imagen de la universidad es obligatoria.\n';
-                    isValid = false;
-                }
-
-                if (!isValid) {
-                    alert(errorMessage);
-                    event.preventDefault(); // Evita el envío del formulario
-                }
-            });
-
-            function isValidURL(url) {
-                try {
-                    new URL(url);
-                    return true;
-                } catch (_) {
-                    return false;
-                }
-            }
-
-            function isValidEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-
-            window.agregarCarrera = function() {
-                const inputCarrera = document.getElementById('carrera');
-                const carrera = inputCarrera.value.trim();
-                const listaCarreras = document.getElementById('listaCarreras');
-                const tituloCarreras = document.getElementById('tituloCarreras');
-                const carrerasInput = document.getElementById('carreras');
-
-                if (carrera) {
-                    const nuevoElemento = document.createElement('li');
-                    nuevoElemento.className = 'list-group-item d-flex justify-content-between align-items-center';
-                    nuevoElemento.textContent = carrera;
-
-                    const botonEliminar = document.createElement('button');
-                    botonEliminar.className = 'btn btn-danger btn-sm';
-                    botonEliminar.textContent = 'Eliminar';
-                    botonEliminar.onclick = () => {
-                        nuevoElemento.remove();
-                        actualizarCarreras();
-                    };
-
-                    nuevoElemento.appendChild(botonEliminar);
-                    listaCarreras.appendChild(nuevoElemento);
-
-                    // Mostrar el título si hay carreras
-                    tituloCarreras.style.display = 'block';
-
-                    // Limpiar el campo de entrada
-                    inputCarrera.value = '';
-                    actualizarCarreras();
-                }
-            };
-
-            function actualizarCarreras() {
-                const carreras = Array.from(document.querySelectorAll('#listaCarreras li')).map(li => li.textContent.replace('Eliminar', '').trim());
-                document.getElementById('carreras').value = JSON.stringify(carreras);
-            }
-        });
-    </script>
 </body>
 
 </html>

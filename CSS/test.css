@@ -13,7 +13,10 @@ html {
 body {
     margin: 0;
     font-family: sans-serif;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: column;
+
     /* display: flex;
     flex-direction: column; */
 }
@@ -113,7 +116,7 @@ body {
 .main {
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
+    width: 95%;
     padding: 20px;
 }
 
@@ -189,68 +192,28 @@ h1 {
     display: flex;
     justify-content: space-evenly;
     width: 90%;
-    background-color:#e4dfa9 ;
 }
 
-.number, h2, .comment {
+/* .number, h2, .comment {
     font-family: 'OMEGLE', sans-serif;
     font-weight: 100;
     color: #164738;
-}
+} */
 
 h2 {
     padding: 10px 0 0 0;
 }
 
-.number {
-    font-size: 8em;
-    text-align: center;
-    width: calc(10% + 100px);
-    background-color: #789477;
-}
 
-.number--1 {
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-}
 
-.contenedor--1 {
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-}
 
-.info__middle {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0 0 0 10px;
-}
 
-.img__uni {
-    width: min(300px, 100%);
-    align-self: center;
-    justify-content: center;
-    padding: 0 10px;
-}
-.img__uni img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-}
 
-.comment {
-    background-color: #da750f;
-    width: min-content;
-    padding: 10px 4px 8px 4px;
-    border: none;
-    border-radius: 15px;
-    color: #e6e2dd;
-    font-size: 1.2em;
-}
 
-.comment::selection, .comment:visited {
-color: #e6e2dd;
-}
+
+
+
+
 
 footer {
     margin-top: 20px;

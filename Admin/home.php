@@ -139,13 +139,13 @@ if (!empty($_POST['btnDelete'])) {
             <div class="nav__image__logo">
                 <img src="./../image/green__eyu__logo.png" alt="">
             </div>
-            <form class="nav__form " action="">
+            <!-- <form class="nav__form " action="">
                 <input type="text" placeholder="Search...">
                 <div class="nav__form__button">
                     <input type="submit" value="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-            </form>
+            </form> -->
             <button class="header__nav__profile">
                 <i class="gg-profile"></i>
             </button>

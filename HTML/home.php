@@ -54,7 +54,7 @@ if (!empty($stmt)) {
 } else {
     $descripcion = '';
     $nombre = '';
-    $sql = "INSERT INTO perfiles (Id_cuenta, Nombre, Apellido, Descripcion) VALUES ($id,'', '', '')";
+    $sql = "INSERT INTO Perfiles (Id_cuenta, Nombre, Apellido, Descripcion) VALUES ($id,'', '', '')";
     $resultInsert = $conexion->modificar($sql);
 }
 
@@ -139,13 +139,13 @@ if (!empty($_POST['btnDelete'])) {
             <div class="nav__image__logo">
                 <img src="./../image/green__eyu__logo.png" alt="">
             </div>
-            <form class="nav__form " action="">
+            <!-- <form class="nav__form " action="">
                 <input type="text" placeholder="Search...">
                 <div class="nav__form__button">
                     <input type="submit" value="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-            </form>
+            </form> -->
             <button class="header__nav__profile">
                 <i class="gg-profile"></i>
             </button>
@@ -207,7 +207,7 @@ if (!empty($_POST['btnDelete'])) {
                     <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
                     <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
-                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <!-- <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li> -->
                     <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
                     <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->

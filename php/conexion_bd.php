@@ -36,18 +36,5 @@ class conexion
         return $sentencia->execute();
     }
 
-    public function consultarGPT($sql, $params = []) {
-        if ($this->conexion) {
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->execute($params);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            throw new Exception("No se ha establecido una conexión a la base de datos.");
-        }
-    }
 
-    public function modificarGPT($sql, $params = []) {
-        $stmt = $this->conexion->prepare($sql);
-        return $stmt->execute($params);
-    }
 }

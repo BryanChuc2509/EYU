@@ -2,6 +2,12 @@
 session_start();
 
 include("./../php/headerProfile.php");
+
+// Verificar si la variable de sesión está establecida
+if (!isset($_SESSION['Nombre_de_Usuario'])) {
+    header('Location: ./../HTML/login.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +16,13 @@ include("./../php/headerProfile.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./../CSS/test.css">
 
     <script>
@@ -152,7 +159,7 @@ include("./../php/headerProfile.php");
                 margin-bottom: 30px;
             }
 
-            .container {
+            .contenedor {
                 width: min(400px, 100%);
             }
 
@@ -171,7 +178,7 @@ include("./../php/headerProfile.php");
                 padding: 30px;
             }
 
-            .container {
+            .contenedor {
                 width: min(400px, 100%);
             }
 
@@ -195,14 +202,14 @@ include("./../php/headerProfile.php");
                     <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
                     <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
-                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
+                    <!-- <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li> -->
                     <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
                     <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
                 </ul>
             </nav>
         </aside>
-        <main class="main">
+        <main class="main ">
             <div class="main__infoSuperior">
                 <h1>¿Aún no tienes idea sobre tu futuro? EYU te asiste</h1>
                 <p class="main__infoSuperior__p">Recuerdan que estos test y herramientas son solo una guía y no
@@ -213,37 +220,51 @@ include("./../php/headerProfile.php");
                     <img src="./../image/Fox ranking.JPG" alt="">
                 </div>
             </div>
-            <div class="container">
-                <section id="card-carousel" class="splide" aria-label="Beautiful Images">
-                    <div class="splide__track">
+            <div class="contenedor">
+                <section id="card-carousel" class="splide container" aria-label="Beautiful Images">
+                <div class="splide__track" style="width: 100%;">
                         <ul class="splide__list">
                             <li class="splide__slide">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Universidad</h5>
-                                        <p class="card-text ellipsis">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                            Cupiditate maxime neque molestiae rem earum, laboriosam corporis recusandae?
-                                            Dignissimos accusamus esse non inventore, ipsa assumenda? Laboriosam quam
-                                            possimus numquam atque enim. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, nihil inventore. Velit optio aspernatur iusto non animi quos voluptatibus corrupti aut commodi eaque, mollitia maxime nihil deleniti consequatur voluptate deserunt?</p>
-                                        <a href="#" class="btn btn-warning mx-auto">Presentar</a>
+                                        <h5 class="card-title">Test de Intereses Profesionales</h5>
+                                        <p class="card-text ellipsis">Este test mide tus intereses en diferentes
+                                            áreas profesionales y compara tus respuestas con las de personas que
+                                            están satisfechas en sus carreras. Te ayuda a identificar áreas de
+                                            interés y sugerir campos de estudio o carreras que pueden ser adecuadas
+                                            para ti . ✨🦊
+                                        </p>
+                                        <a target="_blank" href="https://forms.gle/nZUfP7Yry16GErWE8" class="btn btn-warning mx-auto">Presentar</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="splide__slide">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card Tecnología</h5>
-                                        <p class="card-text ellipsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid consequatur reiciendis molestiae accusamus ad voluptates dolore. Molestias sequi praesentium dolorem, a, veritatis voluptates voluptatibus tenetur, deleniti exercitationem beatae modi debitis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque iusto quibusdam commodi cum beatae architecto itaque culpa ratione est sequi voluptatum quia ad, totam placeat fugiat reiciendis perferendis praesentium obcaecati! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, adipisci voluptatibus! Quisquam, in doloribus. Explicabo quis nemo, distinctio dicta beatae at? Iusto eaque, quos ad veniam ab aliquam sunt dignissimos.</p>
-                                        <a href="#" class="btn btn-warning  mx-auto">Presentar</a>
+                                        <h5 class="card-title">Test de Aptitudes</h5>
+                                        <p class="card-text ellipsis">Este tipo de test evalúa tus habilidades en
+                                            diversas áreas como matemáticas, lenguaje, razonamiento espacial y lógico.
+
+                                            Basándose en tus resultados, te sugiere carreras que podrían aprovechar
+                                            mejor tus habilidades naturales. 🌱😮
+                                        
+
+                                        </p>
+                                        <a target="_blank" href="https://forms.gle/rc8YvNSkBdJ9CDNC8" class="btn btn-warning  mx-auto">Presentar</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="splide__slide">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card Tecnología</h5>
-                                        <p class="card-text ellipsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid consequatur reiciendis molestiae accusamus ad voluptates dolore. Molestias sequi praesentium dolorem, a, veritatis voluptates voluptatibus tenetur, deleniti exercitationem beatae modi debitis! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero veritatis quo culpa nesciunt asperiores suscipit delectus maiores unde rerum voluptates molestiae nihil, enim officiis quisquam. Dicta debitis nostrum quidem harum! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse pariatur omnis qui expedita nulla assumenda numquam laudantium saepe eos reiciendis cupiditate quaerat odio iste delectus, ducimus laborum, reprehenderit nostrum obcaecati. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, eaque aliquid. Nisi quisquam unde suscipit excepturi modi, ut assumenda sapiente minus? Et deleniti natus asperiores sit, at hic animi reprehenderit.</p>
-                                        <a href="#" class="btn btn-warning mx-auto">Presentar</a>
+                                        <h5 class="card-title">Test de Personalidad</h5>
+                                        <p class="card-text ">El MBTI es una herramienta que clasifica
+                                            tu personalidad en 16 tipos diferentes, basándose en cuatro dimensiones:
+                                            extroversión/introversión, sensación/intuición, pensamiento/sentimiento,
+                                            y juicio/percepción. La combinación de estas dimensiones puede darte una
+                                            idea de qué tipo de ambiente de trabajo y roles podrían ser más adecuados
+                                            para ti. 🐳✨</p>
+                                        <a target="_blank" href="https://forms.gle/zN3DrtyRv2u6whhMA" class="btn btn-warning mx-auto">Presentar</a>
                                     </div>
                                 </div>
                             </li>

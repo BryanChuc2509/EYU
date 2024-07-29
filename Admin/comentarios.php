@@ -2,6 +2,12 @@
     session_start();
     
     include("./../php/headerProfile.php");
+
+    // Verificar si la variable de sesión está establecida
+if (!isset($_SESSION['Nombre_de_Usuario'])) {
+    header('Location: ./../HTML/login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -270,6 +276,67 @@
         height: auto;
     }
 
+    .container-md__container__imgUniversity {
+    grid-area: img;
+    overflow: hidden;
+    margin-right: 20px;
+    position: relative;
+}
+
+.container-md__container__imgUniversity img {
+    border-radius: 8px;
+}
+
+.ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    max-height: 6em;
+}
+
+.container-md__container__infoUniversity {
+    margin-left: 0;
+    grid-area: info;
+    align-self: center;
+}
+
+.btns-updateDelete {
+    display: flex;
+    justify-content: space-around;
+    grid-area: buttons;
+}
+
+.btns-updateDelete a {
+    margin-top: 10px;
+    display: block;
+    /* padding: 10px 100px 10px 100px; */
+    padding: 10px 0;
+    width: min(300px, 100%);
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.btns-updateDelete a:visited, .btns-updateDelete a:link  {
+    color: #e4dfa9;     color: #1f1d1d;
+
+}
+
+.btn-delete {
+    background-color: #db8a39;
+    margin-right: 2px;
+}
+
+.btn-update {
+    background-color: #789977;
+    margin-left: 2px;
+    color: #1f1d1d;
+}
+
     footer {
         display: flex;
         flex-direction: column;
@@ -381,32 +448,30 @@
         </aside>
         <main class="main">
             <div class="main__firstPart">
-                <h1>Tus favoritos</h1>
-                <div id="container1" class="container-md">
-                    <div class="container-md__container__imgUniversity">
-                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
-                    </div>
-                    <div class="container-md__container__infoUniversity">
-                        <h2>Universidad Técnologica de Cancún</h2>
-                        <p class="ellipsis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab odio reiciendis animi eveniet sunt commodi illum eius fugit quaerat veniam distinctio dolores aliquam sed, eos ad beatae. Fugit, libero reprehenderit!</p>
-                    </div>
-                    <div class="btn-comantarios">
-                        <a class="btn-comentariosLink" href="./comentarioUni.php">Ver comentarios</a>
-                    </div>
-                </div>
-                <div id="container1" class="container-md">
-                    <div class="container-md__container__imgUniversity">
-                        <img src="./../image/utcancun.png" alt="Logo de Universidad Técnologica de Cancún">
-                    </div>
-                    <div class="container-md__container__infoUniversity">
-                        <h2>Universidad Técnologica de Cancún</h2>
-                        <p class="ellipsis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab odio reiciendis animi eveniet sunt commodi illum eius fugit quaerat veniam distinctio dolores aliquam sed, eos ad beatae. Fugit, libero reprehenderit!</p>
-                    </div>
-                    <div class="btn-comantarios">
-                        <a class="btn-comentariosLink" href="comentarioUni.php">Ver comentarios</a>
-                    </div>
-                </div>
-            </div>
+            <?php
+
+$conexion = new conexion();
+
+// Realizar la consulta
+$sql = "SELECT ID_Universidad, Nombre, Descripcion, image FROM universidades";
+$resultado = $conexion->consultar($sql);
+
+foreach ($resultado as $fila) {
+    echo '<div class="container-md">';
+    echo '    <div class="container-md__container__imgUniversity">';
+    echo '        <img src="' . htmlspecialchars($fila["image"]) . '" alt="imagen de ' . htmlspecialchars($fila["Nombre"]) . '">';
+    echo '    </div>';
+    echo '    <div class="container-md__container__infoUniversity">';
+    echo '        <h2>' . htmlspecialchars($fila["Nombre"]) . '</h2>';
+    echo '        <p class="ellipsis">' . htmlspecialchars($fila["Descripcion"]) . '</p>';
+    echo '    </div>';
+    echo '    <div class="btns-updateDelete">';
+    echo '        <a class="btn-update" href="comentarioUni.php?id=' . urlencode($fila["ID_Universidad"]) . '">Ver comentarios</a>';
+    echo '    </div>';
+    echo '</div>';
+}
+?>
+
             <div class="main__secondPart__img">
                 <img src="./../image/FOX ranking.JPG" alt="Fox Ranking">
             </div>

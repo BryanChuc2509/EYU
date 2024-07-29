@@ -7,6 +7,9 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
     exit();
 }
 
+?>
+<!-- Inslusión del header -->
+<?php
 include("./../php/headerProfile.php");
 ?>
 
@@ -17,12 +20,14 @@ include("./../php/headerProfile.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Añadir universidades</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/000b2652fd.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../CSS/addUniversity.css">
 </head>
+
 
 <style>
     /* Your CSS styles */
@@ -289,7 +294,6 @@ include("./../php/headerProfile.php");
     .btn__update {
         background-color: #789477;
         cursor: pointer;
-
     }
 
 
@@ -330,6 +334,17 @@ include("./../php/headerProfile.php");
         gap: 20px;
     }
 
+    .main__firstPart {
+        /* background-color: #e4dfa9; */
+        border-radius: 25px;
+        width: 100%;
+        max-width: 800px;
+        padding: 20px 20px 5px 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: filter 1s;
+    }
+
     /* Comentarios */
 
     h1 {
@@ -340,7 +355,7 @@ include("./../php/headerProfile.php");
 
     }
 
-    .container-md {
+    /* .container-md {
         background-color: #e4dfa9;
         border-radius: 25px;
         width: 100%;
@@ -349,7 +364,8 @@ include("./../php/headerProfile.php");
         margin-bottom: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: filter 1s;
-    }
+        background-color: #d88634;
+    } */
 
 
     .main__firstPart h1 {
@@ -514,8 +530,6 @@ include("./../php/headerProfile.php");
 </style>
 
 <body>
-
-
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
@@ -528,83 +542,169 @@ include("./../php/headerProfile.php");
         </aside>
         <main class="main">
 
-            <div class="main__firstPart">
-
-                <!-- Contenedor de un comentario -->
-                <?php
-                if (!empty($_GET['id'])) {
-                    $id = htmlspecialchars($_GET['id']);
-                    $conexion = new conexion();
-
-                    $sql = "SELECT Nombre FROM universidades WHERE ID_Universidad = $id"; 
-                    $resultado = $conexion->consultar($sql); 
-
-                    foreach ($resultado as $fila) {
-                        // Verificar y procesar cada elemento del array
-                        if (isset($fila["Nombre"])) {
-                            $nombreUniversidad = htmlspecialchars($fila["Nombre"]);
-                            echo '<h1>' . $nombreUniversidad . '</h1>';
-                        }
-                    }
-
-
-
-
-                    // Realizar la consulta
-                    $sql = "SELECT cts.Nombre_de_Usuario, cmts.Contenido, cmts.ID_Comentarios, uns.Nombre 
-            FROM cuentas cts
-            INNER JOIN comentarios cmts ON cmts.Id_cuenta = cts.ID_Cuenta
-            INNER JOIN universidades uns ON uns.ID_Universidad = cmts.Id_universidad 
-            WHERE uns.ID_Universidad = $id";
-                    $resultado = $conexion->consultar($sql);
-
-                    if ($resultado) {
-
-                    // Mostrar comentarios en el formato HTML deseado
-                    foreach ($resultado as $fila) {
-                        $nombreUsuario = htmlspecialchars($fila["Nombre_de_Usuario"]);
-                        $contenido = htmlspecialchars($fila["Contenido"]);
-                        $idComentario = htmlspecialchars($fila["ID_Comentarios"]);
-                        $nombreUniversidad = htmlspecialchars($fila["Nombre"]);
-
-                        echo '<div id="container1" class="container-md">';
-                        echo '    <div class="container__user">';
-                        echo '        <div class="user">';
-                        echo '            <i class="gg-profile"></i>'; // Icono del perfil; puedes cambiarlo si es necesario
-                        echo '            <p>' . $nombreUsuario . '</p>';
-                        echo '        </div>';
-                        echo '        <div class="delete">';
-                        echo '            <a href="./../php/deleteComment.php?id=' . $idComentario . '" onclick="return confirm(\'¿Estás seguro de que deseas eliminar este comentario?\')">';
-                        echo '                <i class="fa-solid fa-trash"></i>';
-                        echo '            </a>';
-                        echo '        </div>';
-                        echo '    </div>';
-                        echo '    <div class="comment">';
-                        echo '        <p>' . $contenido . '</p>';
-                        echo '    </div>';
-                        echo '</div>';
-                    }} else {
-                        echo '<h1> No hay comentarios</h1>';
-                    }
+            <style>
+                .container-md {
+                    background-color: #e4dfa9;
+                    margin-top: 20px;
+                    border-radius: 15px;
+                    padding: 10px;
                 }
-                ?>
 
+                h2 {
+                    font-family: 'OMEGLE', sans-serif;
+                    color: #164738;
+                }
+            </style>
 
+<div class="main__firstPart">
+    <h1>Actualizar Universidad</h1>
 
+    <?php
+    if (!empty($_GET['id'])) {
+        $id = $_GET['id']; // Asegúrate de validar y sanitizar este valor en producción
 
+        // Instanciar la clase de conexión
+        $conexion = new conexion();
 
-                <script>
-                    function redireccionar() {
-                        window.location.href = './../php/deleteComment.php?id=<?php echo $id; ?>'; // Cambia esta URL a la deseada
-                    }
-                </script>
+        // Consulta SQL
+        $sql = "SELECT 
+                    u.Nombre, u.Descripcion, u.Tipo_de_Universidad, u.URL_pagina, u.Correo_contacto, u.image, 
+                    d.calle, d.Supermanzana, d.Manzana, d.Lote, d.CP, 
+                    crr.Nombre AS carreraNombre, crr.Duracion AS carreraDuracion, crr.Descripcion AS carreraDescripcion 
+                FROM universidades u 
+                INNER JOIN direccion d ON u.ID_Direccion = d.ID_Direccion
+                INNER JOIN universidad_carrera uc ON u.Id_universidad = uc.Id_universidad
+                INNER JOIN carreras crr ON crr.ID_Carrera = uc.ID_carrera
+                WHERE u.Id_universidad = ?";
 
-                <!-- termina contenedor de comentario -->
+        // Preparar y ejecutar la consulta
+        $sentencia = $conexion->conexion->prepare($sql);
+        $sentencia->execute([$id]);
+        $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+        $carreras = []; // Inicializa el array de carreras
+        foreach ($resultado as $fila) {
+            $carreras[] = [
+                'nombre' => $fila['carreraNombre'],
+                'duracion' => $fila['carreraDuracion'],
+                'descripcion' => $fila['carreraDescripcion']
+            ];
+        }
 
-                <div class="main__secondPart__img">
-                    <img src="./../image/FOX ranking.JPG" alt="Fox Ranking">
+        // Solo obtendremos un registro para la universidad, por lo que usamos el primer elemento
+        if (!empty($resultado)) {
+            $fila = $resultado[0];
+    ?>
+
+            <form id="formUniversidad" action="./../php/updateUni.php" method="post" enctype="multipart/form-data">
+                <!-- Información General -->
+                <div id="container1" class="container-md mb-4">
+
+                    <h2>Información General</h2>
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nombre</span>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo htmlspecialchars($fila['Nombre']); ?>" aria-label="Nombre">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Descripción</span>
+                        <textarea class="form-control" id="descripcionUniversidad" name="descripcionUniversidad" aria-label="Descripción"><?php echo htmlspecialchars($fila['Descripcion']); ?></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+                        <select class="form-select" id="inputGroupSelect01" name="tipo">
+                            <option value="publica" <?php echo $fila['Tipo_de_Universidad'] == 'Pública' ? 'selected' : ''; ?>>Pública</option>
+                            <option value="privada" <?php echo $fila['Tipo_de_Universidad'] == 'Privada' ? 'selected' : ''; ?>>Privada</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">URL</span>
+                        <input type="text" class="form-control" id="url" name="url" value="<?php echo htmlspecialchars($fila['URL_pagina']); ?>" aria-label="URL">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Número Telefónico</span>
+                        <input type="tel" class="form-control" id="numero" name="numero" value="<?php echo htmlspecialchars($fila['Correo_contacto']); ?>" aria-label="Número Telefónico">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Imagen Universidad</label>
+                        <input class="form-control" type="file" id="formFile" name="imagen">
+                        <img src="<?php echo htmlspecialchars($fila['image']); ?>" alt="Imagen Actual" style="max-width: 200px; margin-top: 10px;">
+                    </div>
                 </div>
+
+                <!-- Dirección -->
+                <div class="container-md mb-4">
+                    <h2>Dirección</h2>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Smza</span>
+                        <input type="text" class="form-control" id="smza" name="smza" value="<?php echo htmlspecialchars($fila['Supermanzana']); ?>" aria-label="Smza">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Mza</span>
+                        <input type="text" class="form-control" id="mza" name="mza" value="<?php echo htmlspecialchars($fila['Manzana']); ?>" aria-label="Mza">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Calle</span>
+                        <input type="text" class="form-control" id="calle" name="calle" value="<?php echo htmlspecialchars($fila['calle']); ?>" aria-label="Calle">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Lote</span>
+                        <input type="text" class="form-control" id="lote" name="lote" value="<?php echo htmlspecialchars($fila['Lote']); ?>" aria-label="Lote">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">C.P.</span>
+                        <input type="text" class="form-control" id="cp" name="cp" value="<?php echo htmlspecialchars($fila['CP']); ?>" aria-label="CP">
+                    </div>
+                </div>
+
+                <!-- Carreras -->
+                <div class="container-md">
+                    <h2>Formulario de Carreras</h2>
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="carrera" class="form-label input-group-text">Nueva Carrera</label>
+                            <input type="text" class="form-control" id="carrera" name="carrera" placeholder="Introduce una carrera">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Descripción</span>
+                            <textarea class="form-control" id="descripcionCarrera" name="descripcionCarrera" aria-label="Descripción" placeholder="La carrera se caracteriza por..."></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Duración</span>
+                            <input type="text" class="form-control" id="duracionCarrera" name="duracionCarrera" placeholder="2 años" aria-label="Duración">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="agregarCarrera()">Agregar Carrera</button>
+                    <input type="hidden" id="carreras" name="carreras">
+                    <button type="submit" class="btn btn-success mt-3">Actualizar Universidad</button>
+                    <h3 id="tituloCarreras" class="mt-4" style="display: none;">Carreras Agregadas:</h3>
+                    <ul id="listaCarreras" class="list-group mt-2">
+                        <!-- Aquí se agregarán las carreras mediante JavaScript -->
+                        <?php foreach ($carreras as $carrera) : ?>
+                            <li class="list-group-item">
+                                <?php echo htmlspecialchars($carrera['nombre']) . ' - ' . htmlspecialchars($carrera['duracion']) . ' - ' . htmlspecialchars($carrera['descripcion']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </form>
+
+    <?php 
+        } else {
+            echo "No se encontraron datos para la universidad especificada.";
+        }
+    } else {
+        echo "ID no proporcionado.";
+    }
+    ?>
+</div>
+
+
+            <div class="main__secondPart__img">
+                <img src="./../image/FOX ranking.JPG" alt="Fox Ranking">
+            </div>
         </main>
     </div>
     <footer class="footer">
@@ -620,27 +720,6 @@ include("./../php/headerProfile.php");
         <p class="footer__p">Copyright © EYU Explore Your University 2024</p>
     </footer>
 
-    <script>
-        const profileButton = document.querySelector('.header__nav__profile');
-        const menu = document.getElementById('menu');
-        const overlay = document.getElementById('overlay');
-        const closeBtn = document.getElementById('close-btn');
-
-        profileButton.addEventListener('click', function() {
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        closeBtn.addEventListener('click', function() {
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click', function() {
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-    </script>
 </body>
 
 </html>

@@ -2,6 +2,12 @@
 session_start();
 
 include("./../php/headerProfile.php");
+
+// Verificar si la variable de sesión está establecida
+if (!isset($_SESSION['Nombre_de_Usuario'])) {
+    header('Location: ./../HTML/login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +37,7 @@ include("./../php/headerProfile.php");
                 <ul>
                     <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
+                    <!-- <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li> -->
                     <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
                     <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
                     <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
@@ -59,7 +65,7 @@ include("./../php/headerProfile.php");
                         qui perferendis facere at, nostrum necessitatibus iure. Laborum dolorum labore, aliquam optio
                         sunt
                         cupiditate voluptas deleniti.</p>
-                    <a class="comment" href="">Comentarios</a>
+                    <a class="comment" href="./profileUni.php?id=1">Comentarios</a>
                 </div>
                 <div class="img__uni">
                     <img src="./../image/anahuac.png" alt="">

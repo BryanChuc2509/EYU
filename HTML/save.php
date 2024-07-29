@@ -2,6 +2,12 @@
 session_start();
 
 include("./../php/headerProfile.php");
+
+// Verificar si la variable de sesión está establecida
+if (!isset($_SESSION['Nombre_de_Usuario'])) {
+    header('Location: ./../HTML/login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

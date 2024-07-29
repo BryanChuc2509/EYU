@@ -2,6 +2,7 @@
 
 include("./../php/loginLogic.php");
 
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ include("./../php/loginLogic.php");
                 <input id="email" class="form__item form__item--input" type="text"  id="email__input" placeholder="ejemplo@gmail.com" name="I_email">
                 <label class="form__item" for="password__input">Contraseña</label>
                 <input id="pass" class="form__item form__item--input" type="password" id="password__input" placeholder="**********" name="I_password">
-                <p class="form__item p__forgotPassword">¿Has olvidado la <a href="" class="a__forgotPassword">Contraseña</a>?</p>
+                <p class="form__item p__forgotPassword">¿Has olvidado la <a href="./recuperar.php" class="a__forgotPassword">Contraseña</a>?</p>
                 <input class="form__item form__item--input form__inputSubmit" type="submit" value="Comenzar" name="I_login-btn">
                 <p class="form__pDontAccount">¿No tienes una cuenta? <a href="./../HTML/register.php">Registrate</a></p>
             </form>
