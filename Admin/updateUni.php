@@ -7,6 +7,12 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
     exit();
 }
 
+if ($_SESSION['privilegio'] != 'administrador') {
+    header('Location: ./../HTML/home.php');
+    exit();
+}
+
+
 ?>
 <!-- Inslusión del header -->
 <?php

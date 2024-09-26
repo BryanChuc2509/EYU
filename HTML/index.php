@@ -30,28 +30,28 @@
         </main>
     </section>
 
-    <section class="section__university">
+<section class="section__university">
         <h2 class="section__university__h2">Conoce todas las universidades</h2>
         <div class="section__university__container1">
             <div class="section__university__containerImg">
                 <img src="./../image/utcancun.png" alt="">
             </div>
             <div class="section__university__containerImg">
-                <img src="./../image/utcancun.png" alt="">
+                <img src="./../image/politec.jpg" alt="">
             </div>
             <div class="section__university__containerImg">
-                <img src="./../image/utcancun.png" alt="">
+                <img src="./../image/ImagenesUni/unicaribe.jpg" alt="">
             </div>
         </div>
-        <div class="section__university__container2">
+        <div class="section__university__container2">   
             <div class="section__university__containerImg">
-                <img src="./../image/utcancun.png" alt="">
+                <img src="./../image/anahuac.png" alt="">
             </div>
             <div class="section__university__containerImg">
-                <img src="./../image/utcancun.png" alt="">
+                <img src="./../image/salle.jfif" alt="">
             </div>
             <div class="section__university__containerImg">
-                <img src="./../image/utcancun.png" alt="">
+                <img src="./../image/ImagenesUni/unid-cancun.jpg" alt="">
             </div>
         </div>
     </section>

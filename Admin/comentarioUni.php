@@ -7,6 +7,11 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
     exit();
 }
 
+if ($_SESSION['privilegio'] != 'administrador') {
+    header('Location: ./../HTML/home.php');
+    exit();
+}
+
 include("./../php/headerProfile.php");
 ?>
 
@@ -584,7 +589,10 @@ include("./../php/headerProfile.php");
                         echo '    </div>';
                         echo '</div>';
                     }} else {
-                        echo '<h1> No hay comentarios</h1>';
+                        echo '<div id="container1" class="container-md"> ';
+                        echo '<h1> Ups! Parece que no hay comentarios</h1>';
+
+                        echo '</div>';
                     }
                 }
                 ?>

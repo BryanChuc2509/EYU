@@ -7,6 +7,11 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
     exit();
 }
 
+// if ($_SESSION['privilegio'] != 'administrador') {
+//     header('Location: ./../HTML/home.php');
+//     exit();
+// }
+
 // Obtener el nombre de usuario y definir la hora
 
 $id = htmlspecialchars($_SESSION['Id_usuario']);
@@ -133,19 +138,43 @@ if (!empty($_POST['btnDelete'])) {
 
 </head>
 
+<?php
+
+$conexion = new conexion();
+
+// Consulta SQL
+$sql = "SELECT ID_Universidad, Nombre FROM universidades";
+
+// Obtener los resultados
+$resultado = $conexion->consultar($sql);
+?>
+
 <body>
     <header class="header">
         <nav class="header__nav">
             <div class="nav__image__logo">
                 <img src="./../image/green__eyu__logo.png" alt="">
             </div>
-            <!-- <form class="nav__form " action="">
-                <input type="text" placeholder="Search...">
-                <div class="nav__form__button">
-                    <input type="submit" value="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </form> -->
+            <form class="nav__form" id="search-form" onsubmit="return false;">
+            <input class="buscador" type="text" id="search-input" placeholder="Buscar universidad..." autocomplete="off">
+            <div class="nav__form__button" style="height: max-content;">
+                <input type="submit" value="" style="height: 40px;" >
+                <i class="fa-solid fa-magnifying-glass" ></i>
+            </div>
+            <div id="results-container" class="results-container">
+                <?php
+                // Generar la lista de universidades
+                foreach ($resultado as $fila) {
+                    echo '<div class="result-item" data-id="' . htmlspecialchars($fila["ID_Universidad"]) . '">';
+                    echo '    <a href="comentarioUni.php?id=' . htmlspecialchars($fila["ID_Universidad"]) . '">';
+                    echo '        ' . htmlspecialchars($fila["Nombre"]);
+                    echo '    </a>';
+                    echo '</div>';
+                }
+                ?>
+                <div class="no-results hidden">No hay resultados</div>
+            </div>
+        </form>
             <button class="header__nav__profile">
                 <i class="gg-profile"></i>
             </button>
@@ -200,6 +229,20 @@ if (!empty($_POST['btnDelete'])) {
 
     <script src="./../JavaScript/menuDesplegable.js"></script>
 
+    <style>
+        .unixd:link, .unixd:visited {
+            color: #165e46e8;
+        }
+
+        .unixd {
+            text-decoration: none;
+        }
+        .unixd:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+
     <div class="main__wrapper">
         <aside class="aside__nav__secondary">
             <nav class="secondary__bar__nav">
@@ -227,7 +270,7 @@ if (!empty($_POST['btnDelete'])) {
                     <div class="img__university">
                         <img src="./../image/utcancun.png" alt="">
                     </div>
-                    <h3> Universidad Técnologica...</h3>
+                    <h3><a class="unixd" href="./profileUni.php?id=1">Universidad Técnologica...</a> </h3>
                     <p class="main__secondSection__ubication">Ubicada en la AV colosio, mza 35, lt2, CP 77539</p>
                 </div>
             </div>
@@ -265,7 +308,153 @@ if (!empty($_POST['btnDelete'])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <style>
+    .results-container {
+        display: none;
+        /* Ocultar la lista inicialmente */
+        position: absolute;
+        background: white;
+        width: 100%;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        /* overflow-y: auto; */
+        z-index: 1000;
+        /* overflow: scroll; */
+        scrollbar-width:thin;
+    }
 
+    .results-container.show {
+        display: block;
+        /* Mostrar la lista cuando sea necesario */
+    }
+
+    .result-item {
+        padding: 10px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .result-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .no-results {
+        padding: 10px;
+        color: #888;
+        text-align: center;
+    }
+</style>
+
+
+<script>
+    // Función para eliminar acentos y normalizar cadenas
+    function normalizeString(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('results-container');
+    const items = document.querySelectorAll('.result-item');
+    const noResultsMessage = document.querySelector('.no-results');
+
+    searchInput.addEventListener('keyup', e => {
+        const searchTerm = e.target.value.trim();
+        const normalizedSearchTerm = normalizeString(searchTerm).toLowerCase();
+
+        let anyMatch = false;
+        items.forEach(universidad => {
+            const itemText = normalizeString(universidad.textContent).toLowerCase();
+
+            // Verificar si el término de búsqueda está incluido en el texto del elemento
+            const matches = normalizedSearchTerm.split(/\s+/).every(term => itemText.includes(term));
+
+            universidad.classList.toggle('hidden', !matches);
+
+            if (matches) {
+                anyMatch = true;
+            }
+        });
+
+        // Mostrar u ocultar el mensaje de "No hay resultados"
+        noResultsMessage.classList.toggle('hidden', anyMatch);
+
+        // Mostrar la lista cuando se comienza a escribir y hay coincidencias
+        if (searchTerm.length > 0) {
+            resultsContainer.classList.add('show');
+        } else {
+            resultsContainer.classList.remove('show');
+        }
+    });
+
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchTerm = normalizeString(document.getElementById('search-input').value.trim()).toLowerCase();
+        let closestMatch = null;
+
+        // Encontrar el primer elemento que coincida
+        items.forEach(universidad => {
+            const itemText = normalizeString(universidad.textContent).toLowerCase();
+
+            if (itemText.includes(searchTerm) && !closestMatch) {
+                closestMatch = universidad;
+            }
+        });
+
+        if (closestMatch) {
+            const id = closestMatch.getAttribute('data-id');
+            window.location.href = `./../HTML/profileUni.php?id=${id}`;
+        } else {
+            alert('No hay coincidencias');
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!document.getElementById('search-form').contains(e.target)) {
+            resultsContainer.classList.remove('show');
+        }
+    });
+
+    searchInput.addEventListener('focus', function() {
+        if (searchInput.value.trim().length > 0) {
+            resultsContainer.classList.add('show');
+        }
+    });
+</script>
+
+<style>
+    .nav__form {
+        position: relative;
+    }
+
+    .nav__form__button {
+        display: inline-block;
+    }
+
+    .results-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .result-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .result-item:hover {
+        background: #f0f0f0;
+    }
+</style>
 
 </body>
 

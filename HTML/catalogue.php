@@ -1,8 +1,14 @@
 <?php
 session_start();
 
-// include("./../php/headerProfile.php");
-class conexion
+// Verificar si la variable de sesión está establecida
+if (!isset($_SESSION['Nombre_de_Usuario'])) {
+    header('Location: ./../HTML/login.php');
+    exit();
+}
+
+include("./../php/headerProfile.php");
+class conexion2
 {
     private $servidor = "localhost";
     private $usuario = "root";
@@ -25,7 +31,7 @@ class conexion
         return $this->conexion->lastInsertID();
     }
 
-    public function consultar($sql, $params = [])
+    public function consultar2($sql, $params = [])
     {
         $sentencia = $this->conexion->prepare($sql);
         foreach ($params as $key => $value) {
@@ -43,12 +49,6 @@ class conexion
 }
 
 
-
-// Verificar si la variable de sesión está establecida
-if (!isset($_SESSION['Nombre_de_Usuario'])) {
-    header('Location: ./../HTML/login.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +102,19 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
     </style>
 </head>
 
-<body>
+<body>  <?php
+
+$conexion = new conexion2();
+
+// Consulta SQL
+$sql = "SELECT ID_Universidad, Nombre FROM universidades";
+
+// Obtener los resultados
+$resultado = $conexion->consultar2($sql);
+?>
+
+
+
 
 
     <div class="main__wrapper">
@@ -111,8 +123,8 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
                 <ul>
                     <li><a href="./../HTML/home.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     <li><a href="./../HTML/catalogue.php"><i class="fa-solid fa-table-cells-large"></i></a></li>
-                    <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li>
-                    <!-- <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li> -->
+                    <!-- <li><a href="./../HTML/ranking.php"><i class="fa-solid fa-trophy"></i></a></li> -->
+                    <li><a href="./../HTML/save.php"><i class="fa-solid fa-bookmark"></i></a></li>
                     <li><a href="./../HTML/test.php"><i class="fa-solid fa-paperclip"></i></a></li>
                     <li><a href="./../HTML/faq.php"><i class="fa-regular fa-comment-dots"></i></a></li>
                     <!-- <li><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></i></a></li> -->
@@ -130,7 +142,7 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
         <div class="splide__track">
             <ul class="splide__list">
                 <?php
-                $conexion = new conexion();
+                $conexion = new conexion2();
 
                 // Inicializar la consulta SQL
                 $sql = "SELECT ID_Universidad, Nombre, Descripcion, image FROM universidades";
@@ -143,8 +155,8 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
                     $params[':type'] = $type;
                 }
 
-                // Consultar la base de datos
-                $resultado = $conexion->consultar($sql, $params);
+                // consultar2 la base de datos
+                $resultado = $conexion->consultar2($sql, $params);
 
                 foreach ($resultado as $fila) {
                     echo '<li class="splide__slide">';
@@ -155,6 +167,7 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
                     $descripcion = strlen($fila["Descripcion"]) > 150 ? substr($fila["Descripcion"], 0, 150) . '...' : $fila["Descripcion"];
                     echo '            <p class="card-text">' . htmlspecialchars($descripcion) . '</p>';
                     echo '            <a href="ProfileUni.php?id=' . htmlspecialchars($fila["ID_Universidad"]) . '" class="btn btn-outline-primary">Ver más</a>';
+                    echo '            <a href="./../php/save.php?id=' . htmlspecialchars($fila["ID_Universidad"]) . '" class="btn btn-outline-success">Guardar</a>';
                     echo '        </div>';
                     echo '    </div>';
                     echo '</li>';
@@ -204,6 +217,8 @@ document.querySelectorAll('.main__items').forEach(button => {
         <p class="footer__p">Benito Juarez. Cancún, Quintana Roo. México ESP/MEX</p>
         <p class="footer__p">Copyright © EYU Explore Your University 2024</p>
     </footer>
+
+    
 </body>
 
 </html>

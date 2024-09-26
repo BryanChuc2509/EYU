@@ -254,178 +254,351 @@ if (!empty($_POST['btnDelete'])) {
 
 <style>
     .menu {
-    height: 100%;
-    display: flex !important;
-    padding: 10px !important;
-    flex-direction: column !important;
-    position: fixed !important;
-    top: 0 !important;
-    right: -600px !important;
-    /* Initially hide the menu off-screen */
-    width: min(300px, 100%) !important;
-    height: 100% !important;
-    background-color: #e4dfa9 !important;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
-    transition: right 0.5s ease !important;
-    z-index: 1001 !important;
-    scrollbar-width: none !important;
-    overflow: scroll;
-}
+        height: 100%;
+        display: flex !important;
+        padding: 10px !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 0 !important;
+        right: -600px !important;
+        /* Initially hide the menu off-screen */
+        width: min(300px, 100%) !important;
+        height: 100% !important;
+        background-color: #e4dfa9 !important;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
+        transition: right 0.5s ease !important;
+        z-index: 1001 !important;
+        scrollbar-width: none !important;
+        overflow: scroll;
+    }
 
-.menu.active {
-    right: 0 !important;
-    /* Slide the menu into view */
-}
+    .menu.active {
+        right: 0 !important;
+        /* Slide the menu into view */
+    }
 
-.menu-header {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    /* padding: 20px; */
-    color: black !important;
-    margin-bottom: 10px !important;
-    margin-top: 10px !important;
-    font-size: 1.8em !important;
-}
+    .menu-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        /* padding: 20px; */
+        color: black !important;
+        margin-bottom: 10px !important;
+        margin-top: 10px !important;
+        font-size: 1.8em !important;
+    }
 
-.menu-header .close-btn {
-    cursor: pointer !important;
-}
+    .menu-header .close-btn {
+        cursor: pointer !important;
+    }
 
-.menu__content {
-    margin-top: 15px !important;
-    width: 100% !important;
-}
+    .menu__content {
+        margin-top: 15px !important;
+        width: 100% !important;
+    }
 
-.overlay {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    /* Semi-transparent black */
-    opacity: 0 !important;
-    transition: opacity 0.5s ease !important;
-    z-index: 1000 !important;
-    pointer-events: none !important;
-    /* Allows clicking through the overlay when it's not active */
-}
+    .overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        /* Semi-transparent black */
+        opacity: 0 !important;
+        transition: opacity 0.5s ease !important;
+        z-index: 1000 !important;
+        pointer-events: none !important;
+        /* Allows clicking through the overlay when it's not active */
+    }
 
-.overlay.active {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    /* Disables clicking through the overlay when it's active */
-}
+    .overlay.active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        /* Disables clicking through the overlay when it's active */
+    }
 
-.menu__content__inputs {
-    background-color: #d8d39f !important;
-    margin-bottom: 5px !important;
-    padding: 5px 5px 0 5px !important;
-    border-radius: 15px !important;
-}
+    .menu__content__inputs {
+        background-color: #d8d39f !important;
+        margin-bottom: 5px !important;
+        padding: 5px 5px 0 5px !important;
+        border-radius: 15px !important;
+    }
 
-.info__user span,
-.menu__item__label {
-    display: block !important;
-    font-family: 'OMEGLE', sans-serif !important;
-    font-weight: 100 !important;
-}
+    .info__user span,
+    .menu__item__label {
+        display: block !important;
+        font-family: 'OMEGLE', sans-serif !important;
+        font-weight: 100 !important;
+    }
 
-.info__username {
-    font-size: 2em !important;
-    color: #da750f !important;
-    margin-left: 10px !important;
-}
+    .info__username {
+        font-size: 2em !important;
+        color: #da750f !important;
+        margin-left: 10px !important;
+    }
 
-.info__email {
-    font-size: 1.2em !important;
-    margin-left: 10px !important;
-}
+    .info__email {
+        font-size: 1.2em !important;
+        margin-left: 10px !important;
+    }
 
-.menu__item__label {
-    width: 100% !important;
-    font-size: 1.3em !important;
-    color: #164738 !important;
-}
+    .menu__item__label {
+        width: 100% !important;
+        font-size: 1.3em !important;
+        color: #164738 !important;
+    }
 
-.menu__item__input {
-    width: 100% !important;
-    margin: 0 0 4px 0 !important;
-    border: none !important;
-    padding: 4px !important;
-    border-radius: 10px !important;
-}
+    .menu__item__input {
+        width: 100% !important;
+        margin: 0 0 4px 0 !important;
+        border: none !important;
+        padding: 4px !important;
+        border-radius: 10px !important;
+    }
 
-.menu__content__btns {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: space-evenly !important;
-    margin-top: 5px !important;
-}
+    .menu__content__btns {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-evenly !important;
+        margin-top: 5px !important;
+    }
 
-.menu__content__btns .btn__submit {
-    padding: 10px 20px !important;
-    border: none !important;
-    border-radius: 25px !important;
-    color: aliceblue !important;
-    font-family: 'OMEGLE' !important;
-    font-weight: 100 !important;
-    font-size: 1.3em !important;
-}
+    .menu__content__btns .btn__submit {
+        padding: 10px 20px !important;
+        border: none !important;
+        border-radius: 25px !important;
+        color: aliceblue !important;
+        font-family: 'OMEGLE' !important;
+        font-weight: 100 !important;
+        font-size: 1.3em !important;
+    }
 
-.btn__delete {
-    background-color: #d88634 !important;
-    cursor: pointer !important;
-}
+    .btn__delete {
+        background-color: #d88634 !important;
+        cursor: pointer !important;
+    }
 
-.btn__update {
-    background-color: #789477 !important;
-    cursor: pointer !important;
-}
+    .btn__update {
+        background-color: #789477 !important;
+        cursor: pointer !important;
+    }
 
-.menu__content__img {
-    width: 90% !important;
-    position: absolute !important;
-    /* margin-top: -20px; */
-    left: 15px !important;
-}
+    .menu__content__img {
+        width: 90% !important;
+        position: absolute !important;
+        /* margin-top: -20px; */
+        left: 15px !important;
+    }
 
-.menu__content__img .icon__closeSesion:link,
-.menu__content__img .icon__closeSesion:visited {
-    color: #1f1d1d !important;
-}
+    .menu__content__img .icon__closeSesion:link,
+    .menu__content__img .icon__closeSesion:visited {
+        color: #1f1d1d !important;
+    }
 
-.icon__closeSesion {
-    position: absolute !important;
-    top: 10px !important;
-    left: 10px !important;
-    font-size: 1.5em !important;
-}
+    .icon__closeSesion {
+        position: absolute !important;
+        top: 10px !important;
+        left: 10px !important;
+        font-size: 1.5em !important;
+    }
 
-.menu__content__img .img__profile {
-    width: 100% !important;
-    height: auto !important;
-}
+    .menu__content__img .img__profile {
+        width: 100% !important;
+        height: auto !important;
+    }
 
 </style>
+<?php
+
+$conexion = new conexion();
+
+// Consulta SQL
+$sql = "SELECT ID_Universidad, Nombre FROM universidades";
+
+// Obtener los resultados
+$resultado = $conexion->consultar($sql);
+?>
 <header class="header">
     <nav class="header__nav">
         <div class="nav__image__logo">
             <img src="./../image/green__eyu__logo.png" alt="">
         </div>
-        <!-- <form class="nav__form " action="">
-            <input type="text" placeholder="Search...">
+        <form class="nav__form" id="search-form" onsubmit="return false;">
+            <input class="buscador" type="text" id="search-input" placeholder="Buscar universidad..." autocomplete="off">
             <div class="nav__form__button">
                 <input type="submit" value="">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-        </form> -->
+            <div id="results-container" class="results-container">
+                <?php
+                // Generar la lista de universidades
+                foreach ($resultado as $fila) {
+                    echo '<div class="result-item" data-id="' . htmlspecialchars($fila["ID_Universidad"]) . '">';
+                    echo '    <a href="profileUni.php?id=' . htmlspecialchars($fila["ID_Universidad"]) . '">';
+                    echo '        ' . htmlspecialchars($fila["Nombre"]);
+                    echo '    </a>';
+                    echo '</div>';
+                }
+                ?>
+                <div class="no-results hidden">No hay resultados</div>
+            </div>
+        </form>
         <button class="header__nav__profile">
             <i class="gg-profile"></i>
         </button>
     </nav>
 </header>
+
+<style>
+    .results-container {
+        display: none;
+        /* Ocultar la lista inicialmente */
+        position: absolute;
+        background: white;
+        width: 100%;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        /* overflow-y: auto; */
+        z-index: 1000;
+        /* overflow: scroll; */
+        scrollbar-width:thin;
+    }
+
+    .results-container.show {
+        display: block;
+        /* Mostrar la lista cuando sea necesario */
+    }
+
+    .result-item {
+        padding: 10px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .result-item:hover {
+        background-color: #f0f0f0;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .no-results {
+        padding: 10px;
+        color: #888;
+        text-align: center;
+    }
+</style>
+
+
+<script>
+    // Función para eliminar acentos y normalizar cadenas
+    function normalizeString(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('results-container');
+    const items = document.querySelectorAll('.result-item');
+    const noResultsMessage = document.querySelector('.no-results');
+
+    searchInput.addEventListener('keyup', e => {
+        const searchTerm = e.target.value.trim();
+        const normalizedSearchTerm = normalizeString(searchTerm).toLowerCase();
+
+        let anyMatch = false;
+        items.forEach(universidad => {
+            const itemText = normalizeString(universidad.textContent).toLowerCase();
+
+            // Verificar si el término de búsqueda está incluido en el texto del elemento
+            const matches = normalizedSearchTerm.split(/\s+/).every(term => itemText.includes(term));
+
+            universidad.classList.toggle('hidden', !matches);
+
+            if (matches) {
+                anyMatch = true;
+            }
+        });
+
+        // Mostrar u ocultar el mensaje de "No hay resultados"
+        noResultsMessage.classList.toggle('hidden', anyMatch);
+
+        // Mostrar la lista cuando se comienza a escribir y hay coincidencias
+        if (searchTerm.length > 0) {
+            resultsContainer.classList.add('show');
+        } else {
+            resultsContainer.classList.remove('show');
+        }
+    });
+
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchTerm = normalizeString(document.getElementById('search-input').value.trim()).toLowerCase();
+        let closestMatch = null;
+
+        // Encontrar el primer elemento que coincida
+        items.forEach(universidad => {
+            const itemText = normalizeString(universidad.textContent).toLowerCase();
+
+            if (itemText.includes(searchTerm) && !closestMatch) {
+                closestMatch = universidad;
+            }
+        });
+
+        if (closestMatch) {
+            const id = closestMatch.getAttribute('data-id');
+            window.location.href = `./../HTML/profileUni.php?id=${id}`;
+        } else {
+            alert('No hay coincidencias');
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!document.getElementById('search-form').contains(e.target)) {
+            resultsContainer.classList.remove('show');
+        }
+    });
+
+    searchInput.addEventListener('focus', function() {
+        if (searchInput.value.trim().length > 0) {
+            resultsContainer.classList.add('show');
+        }
+    });
+</script>
+
+<style>
+    .nav__form {
+        position: relative;
+    }
+
+    .nav__form__button {
+        display: inline-block;
+    }
+
+    .results-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .result-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .result-item:hover {
+        background: #f0f0f0;
+    }
+</style>
+</style>
+
 
 
 
@@ -497,3 +670,4 @@ if (!empty($_POST['btnDelete'])) {
         overlay.classList.remove('active');
     });
 </script>
+

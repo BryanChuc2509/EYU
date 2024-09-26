@@ -32,6 +32,8 @@ if (!empty($_POST['I_login-btn'])) {
             // Verificar si el correo coincide y si la contraseña es correcta
             if (($Correo == $usuario or $Correo == $correoBd) and ($contrasenabd == $Contrasena)) {
                 session_start();
+
+
                 $_SESSION['Correo'] = $correoBd;
                 $_SESSION['Nombre_de_Usuario'] = $usuario;
                 $_SESSION['Id_usuario'] = $id;
@@ -39,9 +41,22 @@ if (!empty($_POST['I_login-btn'])) {
 
                 // Redirigir según el tipo de cuenta
                 if ($tipo_cuenta == 'administrador') {
+                    echo '<script>
+                    localStorage.removeItem("correo");
+                    localStorage.removeItem("contrasena");
+                        </script>';
                     header('Location: ./../Admin/home.php');
+                    $_SESSION['privilegio'] = 'administrador';
+
                 } else {
+                    echo '<script>
+                    localStorage.removeItem("correo");
+                    localStorage.removeItem("contrasena");
+                        </script>';
                     header('Location: ./../HTML/home.php');
+                    $_SESSION['privilegio'] = 'usuario';
+
+
                 }
                 exit(); // Asegurarse de detener la ejecución después de redirigir
             } else {
