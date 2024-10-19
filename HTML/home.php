@@ -39,7 +39,7 @@ $selectedPhrase = $result[$numRandom]['frase'];
 
 $sql = "SELECT correo, Nombre_de_Usuario, Contraseña, Nombre, Apellido, Descripcion FROM cuentas c
 INNER JOIN perfiles p 
-ON c.ID_Cuenta = p.ID_Cuenta
+ON c.ID_Cuenta = p.Id_cuenta
 WHERE c.ID_Cuenta = $id";
 
 $stmt = $conexion->consultar($sql, ['id' => $id]);

@@ -1,6 +1,6 @@
 <?php
 if (!empty($_POST['I_login-btn'])) {
-    $conexion_sesion = new mysqli('127.0.0.1', 'root', 'root', 'EYU');
+    $conexion_sesion = new mysqli('127.0.0.1', 'root', 'root', 'eyuRework');
 
     // Verificar conexión
     if ($conexion_sesion->connect_error) {

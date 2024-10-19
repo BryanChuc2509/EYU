@@ -7,6 +7,7 @@ if (!isset($_SESSION['Nombre_de_Usuario'])) {
     exit();
 }
 
+// Cambiar el nombre de la base de datos 
 include("./../php/headerProfile.php");
 class conexion2
 {
@@ -18,7 +19,7 @@ class conexion2
     public function __construct()
     {
         try {
-            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=eyu", $this->usuario, $this->contrasena);
+            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=eyuRework", $this->usuario, $this->contrasena);
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             return "falla de conexión" . $e;

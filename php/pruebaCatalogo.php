@@ -12,7 +12,7 @@ class conexion
     public function __construct()
     {
         try {
-            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=eyu", $this->usuario, $this->contrasena);
+            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=eyuRework", $this->usuario, $this->contrasena);
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             return "falla de conexión" . $e;

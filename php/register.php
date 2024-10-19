@@ -1,6 +1,6 @@
 <?php
 
-$conexion = new mysqli('127.0.0.1', 'root', 'root', 'eyu'); // Conexión a la base de datos EYU
+$conexion = new mysqli('127.0.0.1', 'root', 'root', 'eyuRework'); // Conexión a la base de datos EYU
 // if ($conexion) {
 //     echo 'Conexion exitosa';
 // } else {
